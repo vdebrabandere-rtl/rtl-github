@@ -1,0 +1,29 @@
+{
+  "name": "Maria Del Rio",
+  "id": "maria",
+  "title": "J'adore la nouvelle identité",
+  "lyrics": [
+    { "line": "", "time": -1 },
+    { "line": "Radio Contact, c'est la liberté, l'authenticité et la proximité.", "time": 1280 },
+    { "line": "Entre la station et moi, on peut parler de coup de foudre.", "time": 5440 },
+    { "line": "J'ai démarré le Good Morning en 2009 et pour la première fois,", "time": 8320 },
+    { "line": "j'ai pu être moi même à l'antenne.", "time": 11440 },
+    { "line": "Avec Olivier Valentino et Gary, nous rions de nos imperfections.", "time": 13240 },
+    { "line": "Chaque matin depuis quinze ans, les auditeurs me découvrent telle que je suis.", "time": 17440 },
+    { "line": "J'ai zéro filtre, je ne joue de rôle à aucun moment,", "time": 20420 },
+    { "line": "tout comme eux, j'ai des failles, des coups de cœur,", "time": 24160 },
+    { "line": "des coups de fatigue, des fous rires.", "time": 26160 },
+    { "line": "Pour tout vous dire, j'ai l'impression qu'ensemble,", "time": 28160 },
+    { "line": "nous formons une vraie équipe.", "time": 30040 },
+    { "line": "Quand je rencontre très régulièrement les auditeurs lors d'actions", "time": 30400 },
+    { "line": "et d'événements organisés par Contact,", "time": 31480 },
+    { "line": "je pense que ce sentiment est partagé.", "time": 34000 },
+    { "line": "Et c'est également ensemble", "time": 37200 },
+    { "line": "que nous allons découvrir ce 16 février le nouveau look", "time": 38960 },
+    { "line": "de la radio avec un dauphin revisité.", "time": 42080 },
+    { "line": "Ce changement, il est rafraîchissant.", "time": 45160 },
+    { "line": "Il va donner à la station un petit coup de pep's très sympa", "time": 47800 },
+    { "line": "qui fera du bien à tout le monde.", "time": 49720 },
+    { "line": "", "time": 99999999 }
+  ]
+}

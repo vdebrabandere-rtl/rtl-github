@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0050ff;
+    box-sizing: border-box;
+}
+
+body a {
+    color: inherit;
+    text-decoration: none;
+}
