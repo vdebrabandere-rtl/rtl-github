@@ -334,6 +334,44 @@ lyrics-app.sticky .c-app__bg {
     transform: translate3d(-50%, 0, 0);
     pointer-events: all;
 }    
+
+.c-download-button{
+    position: absolute;
+    
+    top: 36px;
+    right: 6%;
+
+    transition: all var(--header-transition-duration) ease-in;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    padding: 12px;
+    box-sizing: border-box;
+
+    backdrop-filter: blur(4px);
+
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 9999;
+
+    transition: opacity 0.25s ease-in-out, right var(--header-transition-duration) ease-out, transform var(--header-transition-duration) ease-out, background-color 0.25s ease-in-out;
+}
+
+.c-download-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.c-download-button:hover svg {
+    transform: translateY(-2px);
+}
+
+.c-download-button svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.25s ease-in-out;
+}
 .c-player {
     position: absolute;
     left: 50%;
