@@ -22,6 +22,7 @@ class LyricsApp extends HTMLElement {
             this.content = this.querySelector(".c-content");
             this.player = this.querySelector("custom-player");
             this.resetButton = this.querySelector(".c-reset-button");
+            this.headerHeight = this.querySelector(".c-header").clientHeight;
 
             this.initEventListeners();
             this.initHeader();
@@ -67,9 +68,9 @@ class LyricsApp extends HTMLElement {
                     stroke-linejoin="round" />
             </svg>
         </button>
-        <custom-player src="${this.soundOrigin}${this._data.id}.mp3"></custom-player>
+        <custom-player src="${this.soundOrigin}${this.id}.mp3""></custom-player>
         <div class="c-app__bg">
-            <img class="c-app__img" src="${this.imageOrigin}${this._data.id}.jpg" alt="">
+            <img class="c-app__img" src="${this.imageOrigin}${this.id}.jpg" alt="Photo floue de l'animateur en background">
         </div>
         <div class="c-app__bar"></div>
         `;
@@ -157,21 +158,17 @@ class LyricsApp extends HTMLElement {
             );
 
             if (highlighted) {
-                const targetScrollTop =
-                    highlighted.offsetTop -
-                    highlighted.parentElement.offsetTop +
-                    this.content.offsetHeight / 2 -
-                    highlighted.offsetHeight / 2;
+                const highlightPosition = highlighted.offsetTop - this.content.offsetTop  + this.headerHeight + highlighted.clientHeight; // Position of the highlighted line within the content
+                const offset = 100 - this.headerHeight;
+                // Calculate the target scroll top position
+                let targetScrollTop = highlightPosition - (this.headerHeight - 72);
+            
                 this.content.scrollTo({
                     top: targetScrollTop,
                     behavior: "smooth",
                 });
-
-                clearTimeout(this.autoScrollTimeout);
-                this.autoScrollTimeout = setTimeout(() => {
-                    this.isAutoScrolling = false;
-                }, 500);
             }
+            
         }
     }
 
@@ -237,6 +234,7 @@ class LyricsApp extends HTMLElement {
     adjustHeaderSize(header) {
         let headerHeight = header.clientHeight;
         header.style.height = `${headerHeight}px`;
+        this.headerHeight = headerHeight;
         const headerChildren = header.children;
         let headerChildrenHeight = 18;
         for (let i = 0; i < headerChildren.length; i++) {
@@ -245,6 +243,7 @@ class LyricsApp extends HTMLElement {
         }
         if (headerChildrenHeight > headerHeight) {
             header.style.height = `${headerChildrenHeight}px`;
+            this.headerHeight = headerHeight;
         }
         const headerSubtitle = this.querySelector(".c-header__subtitle");
         headerSubtitle.style.position = "absolute";
