@@ -37,7 +37,9 @@ class LyricsApp extends HTMLElement {
     }
 
     async fetchDatas() {
-        const link = this.dataOrigin + this.id + ".json";
+        // const link = this.dataOrigin + this.id + ".json";
+        const link ="/contact-rebrand/convert/result/" + this.id + ".json";
+
         try {
             const response = await fetch(link);
             if (!response.ok) {
@@ -57,7 +59,7 @@ class LyricsApp extends HTMLElement {
                 </div>
                 <div class="c-header__text">
                     <h3 class="c-header__title">${this._data.title}</h3>
-                    <p class="c-header__subtitle">${this._data.name}</p>
+                    <p class="c-header__subtitle">${this._data.name}<span class"c-header__function"> - ${this._data.function}</span></p>
                 </div>
             </div>
             <div class="c-lyrics"></div>
@@ -111,6 +113,7 @@ class LyricsApp extends HTMLElement {
         this.content.addEventListener("scroll", this.handleScroll);
         this.player.onTimeUpdate((currentTime) => {
             const time = currentTime * 1000;
+            console.log(time)
             const nextLineIndex = this._data.lyrics.findIndex(
                 (line) => line.time > time
             );

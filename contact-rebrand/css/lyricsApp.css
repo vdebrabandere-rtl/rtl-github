@@ -85,7 +85,7 @@ lyrics-app::after {
     z-index: -1;
 }
 
-.c-app.sticky .c-app__bg {
+lyrics-app.sticky .c-app__bg {
     --blur-size: 35px;
     opacity: 0.3;
     transition: all 0.5s ease-out;
@@ -194,6 +194,19 @@ lyrics-app::after {
     left: 0;
     transform: translate3d(0, 0, 0);
     scale: 0.75;
+    transition: all var(--header-transition-duration) ease-out;
+}
+
+.c-header__function {
+    display: none;
+    transform: translate3d(0, -8px);
+    opacity: 0;
+    transition: all var(--header-transition-duration) ease-in;
+}
+
+.c-header.sticky .c-header__function {
+    display: inline;
+    transform: translate3d(0, 0, 0);
     transition: all var(--header-transition-duration) ease-out;
 }
 
