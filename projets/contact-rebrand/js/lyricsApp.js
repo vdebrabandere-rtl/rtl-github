@@ -120,7 +120,7 @@ class LyricsApp extends HTMLElement {
 
         const downloadButton = this.querySelector('.c-download-button');
         downloadButton.addEventListener('click', () => {
-            const link = this.originLink + "lyrics/text/" + this.id + ".pdf";
+            const link = this.originLink + "lyrics/text/philippe.pdf";
             console.log(link)
             window.open(link, '_blank');
         });
