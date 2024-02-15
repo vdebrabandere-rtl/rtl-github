@@ -59,7 +59,8 @@ class LyricsApp extends HTMLElement {
                 </div>
                 <div class="c-header__text">
                     <h3 class="c-header__title">${this._data.title}</h3>
-                    <p class="c-header__subtitle">${this._data.name}<span class"c-header__function"> - ${this._data.function}</span></p>
+                    <p class="c-header__subtitle">${this._data.name}</p>
+                    <p class="c-header__function">${this._data.function}</p>
                 </div>
             </div>
             <div class="c-lyrics"></div>

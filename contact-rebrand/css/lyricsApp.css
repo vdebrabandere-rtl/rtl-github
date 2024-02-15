@@ -197,21 +197,9 @@ lyrics-app.sticky .c-app__bg {
     transition: all var(--header-transition-duration) ease-out;
 }
 
-.c-header__function {
-    display: none;
-    transform: translate3d(0, -8px);
-    opacity: 0;
-    transition: all var(--header-transition-duration) ease-in;
-}
-
-.c-header.sticky .c-header__function {
-    display: inline;
-    transform: translate3d(0, 0, 0);
-    transition: all var(--header-transition-duration) ease-out;
-}
-
 
 .c-header__subtitle {
+    font-size: 18px;
     width: fit-content;
     margin: 0;
     margin-top: 6px;
@@ -222,12 +210,27 @@ lyrics-app.sticky .c-app__bg {
 }
 
 .c-header.sticky .c-header__subtitle {
-    font-size: 14px;
     margin: -3px 0;
     left: 0;
     scale: 0.9;
     transform: translate3d(0, 0, 0);
     transition: all var(--header-transition-duration) ease-out;
+}
+
+.c-header__function {
+    font-size: 14px;
+    margin-top: 32px;
+    opacity: .5;
+    transform: translate3d(0, 0, 0);
+    text-align: center;
+    transition: all var(--header-transition-duration) ease-out;
+}
+
+.c-header.sticky .c-header__function {
+    display: none;
+    transform: translate3d(0, -8px, 0);
+    opacity: 0;
+    transition: all var(--header-transition-duration) ease-in;
 }
 
 .c-lyrics {
