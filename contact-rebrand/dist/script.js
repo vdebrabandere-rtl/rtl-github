@@ -23,7 +23,7 @@ class LyricsApp extends HTMLElement {
             this.player = this.querySelector("custom-player");
             this.resetButton = this.querySelector(".c-reset-button");
 
-            this.initEventListeners(); // Initialize event listeners
+            this.initEventListeners();
             this.initHeader();
         });
     }
@@ -32,10 +32,9 @@ class LyricsApp extends HTMLElement {
         if (this.content) {
             this.content.removeEventListener("scroll", this.handleScroll);
         }
-        clearTimeout(this.autoScrollTimeout); // Prevent delayed actions from executing
+        clearTimeout(this.autoScrollTimeout);
     }
 
-    // Fetch lyrics data from the provided JSON link
     async fetchDatas() {
         const link = this.dataOrigin + this.id + ".json";
         try {
@@ -48,10 +47,7 @@ class LyricsApp extends HTMLElement {
             console.error("Error:", error);
         }
     }
-
-    // Render the initial HTML structure
     render() {
-        // Define the HTML content of the component
         const content = `
         <div class="c-content">
             <div class="c-header">
@@ -77,8 +73,6 @@ class LyricsApp extends HTMLElement {
         </div>
         <div class="c-app__bar"></div>
         `;
-
-        // Combine styles and content and set it to shadow DOM
         this.innerHTML = `${content}`;
     }
 
@@ -105,8 +99,6 @@ class LyricsApp extends HTMLElement {
             });
             lyricsContainer.appendChild(lyricElement);
         });
-
-        // Align the lyrics with the scrolling position
         this.alignLyrics();
     }
 
@@ -116,8 +108,6 @@ class LyricsApp extends HTMLElement {
         });
 
         this.content.addEventListener("scroll", this.handleScroll);
-
-        // Bind to player's time update to update lyrics accordingly
         this.player.onTimeUpdate((currentTime) => {
             const time = currentTime * 1000;
             const nextLineIndex = this._data.lyrics.findIndex(
@@ -146,25 +136,22 @@ class LyricsApp extends HTMLElement {
     }
 
     handleScroll() {
-        // Check if scrolling is caused by user action
         if (!this.isAutoScrolling) {
             if (!this.freeScroll) {
                 this.freeScroll = true;
                 this.resetButton.classList.add("active");
             }
         } else {
-            // This block is executed when scrolling is caused programmatically by alignLyrics
-            // Reset isAutoScrolling after a small delay to allow for any subsequent checks
             clearTimeout(this.autoScrollTimeout);
             this.autoScrollTimeout = setTimeout(() => {
                 this.isAutoScrolling = false;
-            }, 100); // Adjust this delay as needed
+            }, 100);
         }
     }
 
     alignLyrics() {
         if (!this.freeScroll) {
-            this.isAutoScrolling = true; // Indicate programmatic scrolling
+            this.isAutoScrolling = true;
             const highlighted = this.querySelector(
                 ".c-lyrics__line.highlighted"
             );
@@ -180,16 +167,14 @@ class LyricsApp extends HTMLElement {
                     behavior: "smooth",
                 });
 
-                // Reset isAutoScrolling after scrolling finishes, plus a small buffer
-                clearTimeout(this.autoScrollTimeout); // Clear any existing timeout
+                clearTimeout(this.autoScrollTimeout);
                 this.autoScrollTimeout = setTimeout(() => {
                     this.isAutoScrolling = false;
-                }, 500); // Adjust this delay based on scroll duration
+                }, 500);
             }
         }
     }
 
-    // Update the highlighted lyric line based on song progress
     updateLyrics(currentTime) {
         console.log(currentTime);
         const time = currentTime * 1000;
@@ -214,15 +199,12 @@ class LyricsApp extends HTMLElement {
         }
     }
 
-    // Reset the lyrics to their initial state
     resetLyrics() {
         this.freeScroll = false;
         this.isAutoScrolling = true;
         this.resetButton.classList.remove("active");
         this.alignLyrics();
     }
-
-    // player controls
 
     play() {
         if (this.player) this.player.play();
@@ -233,37 +215,28 @@ class LyricsApp extends HTMLElement {
     }
 
     seek(time) {
-        if (this.player) this.player.currentTime = time; // Assuming this sets the time
+        if (this.player) this.player.currentTime = time;
     }
 
     initHeader() {
         const header = this.querySelector(".c-header");
         let originalHeaderPos = header.offsetTop;
-
-        // Set initial header styles and positions
         this.adjustHeaderSize(header);
-
-        // React to window resize to adjust header size
         window.addEventListener("resize", () => this.adjustHeaderSize(header));
-
-        // Scroll event for sticky header behavior
         this.content.addEventListener("scroll", () => {
             let headerNewPos = header.offsetTop;
 
             if (originalHeaderPos !== headerNewPos) {
                 header.classList.add("sticky");
-                this.classList.add("sticky"); // Assuming 'this' refers to .c-app within the component
+                this.classList.add("sticky");
             }
-
             if (this.content.scrollTop < originalHeaderPos) {
                 header.classList.remove("sticky");
                 this.classList.remove("sticky");
             }
         });
     }
-
     adjustHeaderSize(header) {
-        // Dynamically set header size based on its current content and viewport size
         let headerHeight = header.clientHeight;
         header.style.height = `${headerHeight}px`;
         const headerChildren = header.children;
@@ -274,10 +247,7 @@ class LyricsApp extends HTMLElement {
         headerSubtitle.style.position = "absolute";
     }
 }
-
-// Define the custom element <lyrics-app>
 customElements.define("lyrics-app", LyricsApp);
-
 class customPlayer extends HTMLElement {
     constructor() {
         super();

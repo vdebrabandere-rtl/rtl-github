@@ -1,10 +1,9 @@
 {
   "scripts": {
-    "build": "npm run build-js && npm run build-css && node build-html.js",
-    "build-js": "concat -o dist/all-scripts.js js/*.js",
-    "build-css": "concat -o dist/all-styles.css css/*.css"
+    "build": "npm run build-js && npm run build-css",
+    "build-js": "concat -o dist/script.js js/*.js",
+    "build-css": "concat -o dist/style.css css/*.css"
   },
-  
   "devDependencies": {
     "concat": "^1.0.3"
   }
