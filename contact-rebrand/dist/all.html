@@ -1,0 +1,786 @@
+
+  <style>.c-button::before{
+    content: " ";
+    display: block;
+    position: absolute;
+    top: -8px;
+    bottom: -8px;
+    left: -8px;
+    right: -8px;
+
+    border: 2px solid var(--deco-bleu-clair);
+
+    border-radius: calc(12px + 3px);
+    z-index: -1;
+
+    transition: all 0.3s;
+}
+.c-button:hover::before{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 12px;
+    
+    border: 0 solid var(--deco-bleu-clair);
+}
+lyrics-app {
+    --header-transition-duration: 0.45s;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 12px 10% 12px;
+    box-sizing: border-box;
+
+    overflow: hidden;
+    border-radius: 20px;
+
+    color: #fff;
+    font-family: "Gilroy-Medium", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: #ffffff36 solid 5px;
+}
+
+lyrics-app::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(
+        0deg,
+        rgba(0, 80, 255, 0) 0%,
+        rgba(0, 80, 255, 100) 50%
+    );
+    z-index: 9;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.25s ease-in;
+
+    pointer-events: none;
+}
+lyrics-app.sticky::before {
+    opacity: 1;
+    transition: opacity 0.25s ease-out;
+}
+
+lyrics-app::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    bottom: -20px;
+    left: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 80, 255, 0) 0%,
+        rgba(0, 80, 255, 100) 50%
+    );
+    z-index: 9;
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+.c-app__bar {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+    width: 30%;
+    max-width: 150px;
+    height: 3px;
+    background-color: #fff;
+    z-index: 10;
+}
+
+.c-app__bg {
+    --blur-size: 25px;
+    position: absolute;
+    inset: calc(-1 * var(--blur-size));
+
+    filter: blur(var(--blur-size));
+    background-color: #0050ff;
+    opacity: 0.5;
+
+    z-index: -1;
+}
+
+.c-app.sticky .c-app__bg {
+    --blur-size: 35px;
+    opacity: 0.3;
+    transition: all 0.5s ease-out;
+}
+
+.c-app__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.c-content {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    scroll-behavior: smooth;
+}
+
+.c-header {
+    position: sticky;
+    pointer-events: none;
+    width: 100%;
+    top: 0;
+    margin-top: 10vh;
+    margin-bottom: 30px;
+
+    z-index: 10;
+}
+
+.c-header__icon {
+    top: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+
+    width: 90%;
+    max-width: 250px;
+    margin-bottom: 18px;
+    aspect-ratio: 1/1;
+
+    overflow: hidden;
+    border-radius: 12%;
+    pointer-events: all;
+
+    transition: all var(--header-transition-duration) ease-in;
+}
+
+.c-header.sticky .c-header__icon {
+    top: 50px;
+    left: 0;
+    margin: 0;
+    transform: translate3d(0, -50%, 0);
+    max-width: 75px;
+    transition: all var(--header-transition-duration) ease-out;
+}
+
+.c-header__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: all;
+
+}
+
+.c-header__text {
+    width: 100%;
+    top: 100%;
+    left: 50%;
+    transform: translate3d(-50%, -100%, 0);
+    transition: all var(--header-transition-duration) ease-in;
+    pointer-events: all;
+
+}
+
+.c-header.sticky .c-header__text {
+    top: 50px;
+    left: calc(75px + 24px);
+    padding-bottom: 12px;
+    transform: translate3d(0, -50%, 0);
+
+    transition: all var(--header-transition-duration) ease-out;
+}
+
+.c-header__title {
+    position: relative;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    font-size: 24px;
+
+    margin: 0;
+    width: fit-content;
+    text-align: center;
+    transform-origin: left;
+    transition: all var(--header-transition-duration) ease-in;
+}
+
+.c-header.sticky .c-header__title {
+    left: 0;
+    transform: translate3d(0, 0, 0);
+    scale: 0.75;
+    transition: all var(--header-transition-duration) ease-out;
+}
+
+
+.c-header__subtitle {
+    width: fit-content;
+    margin: 0;
+    margin-top: 6px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    transform-origin: left;
+    transition: all var(--header-transition-duration) ease-in;
+}
+
+.c-header.sticky .c-header__subtitle {
+    font-size: 14px;
+    margin: -3px 0;
+    left: 0;
+    scale: 0.9;
+    transform: translate3d(0, 0, 0);
+    transition: all var(--header-transition-duration) ease-out;
+}
+
+.c-lyrics {
+    position: relative;
+    text-align: center;
+    transition: all var(--header-transition-duration) ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+.c-lyrics__line {
+    position: relative;
+    margin: 0;
+
+    font-size: 24px;
+    text-align: left;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all var(--header-transition-duration) ease-in-out;
+}
+
+.c-lyrics__line.highlighted {
+    opacity: 1;
+    margin-bottom: 18px;
+}
+
+.c-past-lyrics {
+    opacity: 1;
+}
+
+.c-reset-button {
+    position: absolute;
+   
+    opacity: 0;
+    pointer-events: none;
+    
+    bottom: 100px;
+    left: 50%;
+    transform: translate3d(-50%, 24px, 0);
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    padding: 12px;
+    box-sizing: border-box;
+
+    backdrop-filter: blur(4px);
+
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 9999;
+
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, background-color 0.25s ease-in-out;
+}
+
+.c-reset-button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.c-reset-button:hover svg {
+    transform: translateY(-2px);
+}
+
+.c-reset-button svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.25s ease-in-out;
+}
+
+.c-reset-button.active {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+    pointer-events: all;
+}    
+.c-player {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+
+    z-index: 10;
+    
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.c-player video{
+    position: absolute;
+    pointer-events: none;
+}
+
+.c-player__play{
+    width: 60px;
+    aspect-ratio: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    cursor: pointer;
+    transition: transform 0.25s ease-in-out;
+}
+
+.c-player__play:hover{
+    transform: scale(1.05);
+}
+
+.c-player__play img{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.25s ease-in-out;
+}
+
+.c-player__wave{
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+}
+
+.c-player__wave-svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+
+}
+
+.c-player__wave-svg--clipped{
+    opacity: 1;
+    clip-path: inset(0 100% 0 0);
+}
+
+.c-player__wave-svg--hover{
+    clip-path: inset(0 100% 0 0);
+}</style>
+  <script defer type="module">// Define the LyricsApp web component
+class LyricsApp extends HTMLElement {
+    constructor() {
+        super();
+        this.id = this.getAttribute("id");
+        this.originLink = "https://raw.githubusercontent.com/vdebrabandere-rtl/ressources/main/contact-rebrand/";
+        this.dataOrigin = this.originLink + "/lyrics/json/";
+        this.imageOrigin = this.originLink + "animateurs-pictures/";
+        this.soundOrigin = this.originLink + "/lyrics/sounds/";
+        this._data = null;
+        this.freeScroll = false;
+        this.isAutoScrolling = false;
+        this.currentLine = null;
+
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+
+    connectedCallback() {
+        this.fetchDatas().then(() => {
+            this.render();
+            this.generateLyrics(this._data.lyrics);
+            this.content = this.querySelector(".c-content");
+            this.player = this.querySelector("custom-player");
+            this.resetButton = this.querySelector(".c-reset-button");
+
+            this.initEventListeners(); // Initialize event listeners
+            this.initHeader();
+        });
+    }
+
+    disconnectedCallback() {
+        if (this.content) {
+            this.content.removeEventListener("scroll", this.handleScroll);
+        }
+        clearTimeout(this.autoScrollTimeout); // Prevent delayed actions from executing
+    }
+
+    // Fetch lyrics data from the provided JSON link
+    async fetchDatas() {
+        const link = this.dataOrigin + this.id + ".json";
+        try {
+            const response = await fetch(link);
+            if (!response.ok) {
+                throw new Error("Failed to fetch lyric data");
+            }
+            this._data = await response.json();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    // Render the initial HTML structure
+    render() {
+        // Define the HTML content of the component
+        const content = `
+        <div class="c-content">
+            <div class="c-header">
+                <div class="c-header__icon">
+                    <img class="c-header__img" src="${this.imageOrigin}${this.id}.jpg" alt="">
+                </div>
+                <div class="c-header__text">
+                    <h3 class="c-header__title">${this._data.title}</h3>
+                    <p class="c-header__subtitle">${this._data.name}</p>
+                </div>
+            </div>
+            <div class="c-lyrics"></div>
+        </div>
+        <button class="c-reset-button">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.008 14.1V42M12 26L24 14L36 26M12 6H36" stroke="white" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+        <custom-player src="${this.soundOrigin}${this._data.id}.mp3"></custom-player>
+        <div class="c-app__bg">
+            <img class="c-app__img" src="${this.imageOrigin}${this._data.id}.jpg" alt="">
+        </div>
+        <div class="c-app__bar"></div>
+        `;
+
+        // Combine styles and content and set it to shadow DOM
+        this.innerHTML = `${content}`;
+    }
+
+    generateLyrics(lyrics) {
+        const lyricsContainer = this.querySelector(".c-lyrics");
+        lyricsContainer.innerHTML = ""; // Clear existing content
+
+        lyrics.forEach((line) => {
+            const lyricElement = document.createElement("p");
+            lyricElement.classList.add("c-lyrics__line");
+            if (line.note) {
+                lyricElement.classList.add("c-past-lyrics");
+            }
+            lyricElement.setAttribute("data-time", line.time);
+            lyricElement.textContent = line.line || "";
+            lyricElement.addEventListener("click", () => {
+                const time =
+                    parseFloat(lyricElement.getAttribute("data-time")) / 1000;
+                this.player.seek(time);
+                this.isAutoScrolling = true;
+                this.freeScroll = false;
+                this.resetButton.classList.remove("active");
+                this.alignLyrics();
+            });
+            lyricsContainer.appendChild(lyricElement);
+        });
+
+        // Align the lyrics with the scrolling position
+        this.alignLyrics();
+    }
+
+    initEventListeners() {
+        this.resetButton.addEventListener("click", () => {
+            this.resetLyrics();
+        });
+
+        this.content.addEventListener("scroll", this.handleScroll);
+
+        // Bind to player's time update to update lyrics accordingly
+        this.player.onTimeUpdate((currentTime) => {
+            const time = currentTime * 1000;
+            const nextLineIndex = this._data.lyrics.findIndex(
+                (line) => line.time > time
+            );
+            if (
+                nextLineIndex !== -1 &&
+                this._data.lyrics[nextLineIndex] !== this.currentLine
+            ) {
+                this.currentLine = this._data.lyrics[nextLineIndex];
+                const lyricsLines = this.querySelectorAll(".c-lyrics__line");
+                lyricsLines.forEach((line, index) => {
+                    index = index + 1;
+                    line.classList.toggle(
+                        "highlighted",
+                        index === nextLineIndex
+                    );
+                    line.classList.toggle(
+                        "c-past-lyrics",
+                        index < nextLineIndex
+                    );
+                });
+                this.alignLyrics();
+            }
+        });
+    }
+
+    handleScroll() {
+        // Check if scrolling is caused by user action
+        if (!this.isAutoScrolling) {
+            if (!this.freeScroll) {
+                this.freeScroll = true;
+                this.resetButton.classList.add("active");
+            }
+        } else {
+            // This block is executed when scrolling is caused programmatically by alignLyrics
+            // Reset isAutoScrolling after a small delay to allow for any subsequent checks
+            clearTimeout(this.autoScrollTimeout);
+            this.autoScrollTimeout = setTimeout(() => {
+                this.isAutoScrolling = false;
+            }, 100); // Adjust this delay as needed
+        }
+    }
+
+    alignLyrics() {
+        if (!this.freeScroll) {
+            this.isAutoScrolling = true; // Indicate programmatic scrolling
+            const highlighted = this.querySelector(
+                ".c-lyrics__line.highlighted"
+            );
+
+            if (highlighted) {
+                const targetScrollTop =
+                    highlighted.offsetTop -
+                    highlighted.parentElement.offsetTop +
+                    this.content.offsetHeight / 2 -
+                    highlighted.offsetHeight / 2;
+                this.content.scrollTo({
+                    top: targetScrollTop,
+                    behavior: "smooth",
+                });
+
+                // Reset isAutoScrolling after scrolling finishes, plus a small buffer
+                clearTimeout(this.autoScrollTimeout); // Clear any existing timeout
+                this.autoScrollTimeout = setTimeout(() => {
+                    this.isAutoScrolling = false;
+                }, 500); // Adjust this delay based on scroll duration
+            }
+        }
+    }
+
+    // Update the highlighted lyric line based on song progress
+    updateLyrics(currentTime) {
+        console.log(currentTime);
+        const time = currentTime * 1000;
+        const nextLineIndex = this._data.lyrics.findIndex(
+            (line) => line.time > time
+        );
+
+        if (
+            nextLineIndex !== -1 &&
+            this._data.lyrics[nextLineIndex] !== this.currentLine
+        ) {
+            console.log("enter");
+            this.currentLine = this._data.lyrics[nextLineIndex];
+            const lyricsLines = this.querySelectorAll(".c-lyrics__line");
+            lyricsLines.forEach((line, index) => {
+                index = index + 1;
+                line.classList.toggle("highlighted", index === nextLineIndex);
+                line.classList.toggle("c-past-lyrics", index < nextLineIndex);
+            });
+
+            this.alignLyrics();
+        }
+    }
+
+    // Reset the lyrics to their initial state
+    resetLyrics() {
+        this.freeScroll = false;
+        this.isAutoScrolling = true;
+        this.resetButton.classList.remove("active");
+        this.alignLyrics();
+    }
+
+    // player controls
+
+    play() {
+        if (this.player) this.player.play();
+    }
+
+    pause() {
+        if (this.player) this.player.pause();
+    }
+
+    seek(time) {
+        if (this.player) this.player.currentTime = time; // Assuming this sets the time
+    }
+
+    initHeader() {
+        const header = this.querySelector(".c-header");
+        let originalHeaderPos = header.offsetTop;
+
+        // Set initial header styles and positions
+        this.adjustHeaderSize(header);
+
+        // React to window resize to adjust header size
+        window.addEventListener("resize", () => this.adjustHeaderSize(header));
+
+        // Scroll event for sticky header behavior
+        this.content.addEventListener("scroll", () => {
+            let headerNewPos = header.offsetTop;
+
+            if (originalHeaderPos !== headerNewPos) {
+                header.classList.add("sticky");
+                this.classList.add("sticky"); // Assuming 'this' refers to .c-app within the component
+            }
+
+            if (this.content.scrollTop < originalHeaderPos) {
+                header.classList.remove("sticky");
+                this.classList.remove("sticky");
+            }
+        });
+    }
+
+    adjustHeaderSize(header) {
+        // Dynamically set header size based on its current content and viewport size
+        let headerHeight = header.clientHeight;
+        header.style.height = `${headerHeight}px`;
+        const headerChildren = header.children;
+        for (let i = 0; i < headerChildren.length; i++) {
+            headerChildren[i].style.position = "absolute";
+        }
+        const headerSubtitle = this.querySelector(".c-header__subtitle");
+        headerSubtitle.style.position = "absolute";
+    }
+}
+
+// Define the custom element <lyrics-app>
+customElements.define("lyrics-app", LyricsApp);
+
+class customPlayer extends HTMLElement {
+    constructor() {
+        super();
+    }
+
+    connectedCallback() {
+        this.src = this.getAttribute("src");
+
+        this.assetsOrigin = "https://raw.githubusercontent.com/vdebrabandere-rtl/ressources/main/contact-rebrand/assets/svg/";
+        this.render();
+        this.video = this.querySelector("video");
+        this.playPauseButton = this.querySelector(".c-player__play");
+        this.playPauseIcon = this.playPauseButton.querySelector("img");
+        this.initEventListeners()
+    }
+
+    render() {
+        // Styles and content as previously defined
+        const content = `
+            <div class="c-player">
+                <button class="c-player__play"><img src="${this.assetsOrigin}/play.svg" alt="Play icon"></button>
+                <div class="c-player__wave">
+                    <img src="${this.assetsOrigin}/wavform.svg" alt="waveform transparent" class="c-player__wave-svg">
+                    <img src="${this.assetsOrigin}/wavform.svg" alt="waveform transparent" class="c-player__wave-svg c-player__wave-svg--clipped">
+                    <img src="${this.assetsOrigin}/wavform.svg" alt="waveform transparent" class="c-player__wave-svg c-player__wave-svg--hover">
+                </div>
+                <video controlslist="nodownload" _autoplay="" name="media" oncontextmenu="return false;">
+                    <source src="${this.src}" type="audio/mpeg" />
+                </video>
+            </div>
+        `;
+    
+        this.innerHTML = `${content}`;
+    }
+    
+    initEventListeners() {
+        const wave = this.querySelector('.c-player__wave');
+        const clippedWave = this.querySelector('.c-player__wave-svg--clipped');
+    
+        this.playPauseButton.addEventListener("click", () => this.togglePlayPause());
+    
+        // Updated to call updateClip directly with the correct argument
+        this.video.addEventListener("timeupdate", () => this.updateClip(clippedWave));
+    
+        wave.addEventListener("click", e => this.calculSeek(e, wave));
+        wave.addEventListener("mousemove", e => this.hoverWave(e, wave));
+        wave.addEventListener("mouseleave", () => this.leaveWave());
+    }
+    
+
+    togglePlayPause() { 
+        if (this.video.paused) {
+            this.video.play();
+            this.playPauseIcon.src = `${this.assetsOrigin}/pause.svg`;
+        } else {
+            this.video.pause();
+            this.playPauseIcon .src = `${this.assetsOrigin}/play.svg`;
+        }
+    }
+
+    updateClip(clippedWave) {
+        const percentage = this.video.currentTime / this.video.duration * 100;
+        clippedWave.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+        requestAnimationFrame(() => this.updateClip(this.video, clippedWave));
+    }
+    
+
+    calculSeek(e, wave) {
+        if (!this.video) {
+            console.error("Video element is not available");
+            return;
+        }
+        const rect = wave.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = x / wave.offsetWidth;
+        this.video.currentTime = percentage * this.video.duration;
+    }
+    
+    hoverWave(e, wave) {
+        const hoverWave = this.querySelector('.c-player__wave-svg--hover');
+        const rect = wave.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = x / wave.offsetWidth;
+        hoverWave.style.clipPath = `inset(0 ${100 - percentage * 100}% 0 0)`;
+    }
+
+    leaveWave() {
+        const hoverWave = this.querySelector('.c-player__wave-svg--hover');
+        hoverWave.style.clipPath = 'inset(0 100% 0 0)';
+    }
+
+    getCurrentTime() {
+        return this.video.currentTime;
+    }
+
+    seek(time) {
+        this.video.currentTime = time;
+    }
+
+    // You might also want to expose event listeners to the outside
+    onTimeUpdate(callback) {
+        this.video.addEventListener("timeupdate", () => callback(this.video.currentTime));
+    }
+}
+
+customElements.define("custom-player", customPlayer);
+
+document.addEventListener('keydown', function(e) {
+    if (e.code === 'Space') {
+        e.preventDefault();
+        const focusedPlayer = document.activeElement.closest('custom-player');
+        console.log(focusedPlayer)
+        if (focusedPlayer) {
+            focusedPlayer.togglePlayPause();
+        }
+    }
+});</script>

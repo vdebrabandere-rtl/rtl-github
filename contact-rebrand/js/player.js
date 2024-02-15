@@ -5,32 +5,34 @@ class customPlayer extends HTMLElement {
 
     connectedCallback() {
         this.src = this.getAttribute("src");
+
+        this.assetsOrigin = "https://raw.githubusercontent.com/vdebrabandere-rtl/ressources/main/contact-rebrand/assets/svg/";
         this.render();
         this.video = this.querySelector("video");
         this.playPauseButton = this.querySelector(".c-player__play");
         this.playPauseIcon = this.playPauseButton.querySelector("img");
-        this.initEventListeners();
+        this.initEventListeners()
     }
 
     render() {
         // Styles and content as previously defined
         const content = `
             <div class="c-player">
-                <button class="c-player__play"><img src="/assets/img/play.svg" alt="Play icon"></button>
+                <button class="c-player__play"><img src="${this.assetsOrigin}/play.svg" alt="Play icon"></button>
                 <div class="c-player__wave">
-                    <img src="/assets/img/wavform.svg" alt="waveform transparent" class="c-player__wave-svg">
-                    <img src="/assets/img/wavform.svg" alt="waveform transparent" class="c-player__wave-svg c-player__wave-svg--clipped">
-                    <img src="/assets/img/wavform.svg" alt="waveform transparent" class="c-player__wave-svg c-player__wave-svg--hover">
+                    <img src="${this.assetsOrigin}/wavform.svg" alt="waveform transparent" class="c-player__wave-svg">
+                    <img src="${this.assetsOrigin}/wavform.svg" alt="waveform transparent" class="c-player__wave-svg c-player__wave-svg--clipped">
+                    <img src="${this.assetsOrigin}/wavform.svg" alt="waveform transparent" class="c-player__wave-svg c-player__wave-svg--hover">
                 </div>
                 <video controlslist="nodownload" _autoplay="" name="media" oncontextmenu="return false;">
                     <source src="${this.src}" type="audio/mpeg" />
                 </video>
             </div>
         `;
-
+    
         this.innerHTML = `${content}`;
     }
-
+    
     initEventListeners() {
         const wave = this.querySelector('.c-player__wave');
         const clippedWave = this.querySelector('.c-player__wave-svg--clipped');
@@ -49,10 +51,10 @@ class customPlayer extends HTMLElement {
     togglePlayPause() { 
         if (this.video.paused) {
             this.video.play();
-            this.playPauseIcon.src = "/assets/img/pause.svg";
+            this.playPauseIcon.src = `${this.assetsOrigin}/pause.svg`;
         } else {
             this.video.pause();
-            this.playPauseIcon .src = "/assets/img/play.svg";
+            this.playPauseIcon .src = `${this.assetsOrigin}/play.svg`;
         }
     }
 
