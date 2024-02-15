@@ -176,7 +176,6 @@ class LyricsApp extends HTMLElement {
     }
 
     updateLyrics(currentTime) {
-        console.log(currentTime);
         const time = currentTime * 1000;
         const nextLineIndex = this._data.lyrics.findIndex(
             (line) => line.time > time
@@ -186,7 +185,6 @@ class LyricsApp extends HTMLElement {
             nextLineIndex !== -1 &&
             this._data.lyrics[nextLineIndex] !== this.currentLine
         ) {
-            console.log("enter");
             this.currentLine = this._data.lyrics[nextLineIndex];
             const lyricsLines = this.querySelectorAll(".c-lyrics__line");
             lyricsLines.forEach((line, index) => {
