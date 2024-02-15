@@ -116,6 +116,8 @@ lyrics-app::after {
     margin-top: 10vh;
     margin-bottom: 30px;
 
+    box-sizing: border-box;
+
     z-index: 10;
 }
 
@@ -186,6 +188,8 @@ lyrics-app::after {
 }
 
 .c-header.sticky .c-header__title {
+    text-align: left;
+    max-width: 70%;
     left: 0;
     transform: translate3d(0, 0, 0);
     scale: 0.75;

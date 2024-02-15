@@ -240,8 +240,13 @@ class LyricsApp extends HTMLElement {
         let headerHeight = header.clientHeight;
         header.style.height = `${headerHeight}px`;
         const headerChildren = header.children;
+        let headerChildrenHeight = 18;
         for (let i = 0; i < headerChildren.length; i++) {
+            headerChildrenHeight += headerChildren[i].clientHeight;
             headerChildren[i].style.position = "absolute";
+        }
+        if (headerChildrenHeight > headerHeight) {
+            header.style.height = `${headerChildrenHeight}px`;
         }
         const headerSubtitle = this.querySelector(".c-header__subtitle");
         headerSubtitle.style.position = "absolute";

@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "build": "npm run build-js && npm run build-css",
+    "build": "npm run build-js && npm run build-css && npm run commit-and-push",
     "build-js": "concat -o dist/script.js js/*.js",
-    "build-css": "concat -o dist/style.css css/*.css"
+    "build-css": "concat -o dist/style.css css/*.css",
+    "commit-and-push": "git add . && git commit -m 'New build' && git push"
   },
   "devDependencies": {
     "concat": "^1.0.3"
