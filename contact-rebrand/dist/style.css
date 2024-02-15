@@ -392,3 +392,6 @@ lyrics-app::after {
 .c-player__wave-svg--hover{
     clip-path: inset(0 100% 0 0);
 }
+html, body{
+    overflow-x: hidden;
+}
