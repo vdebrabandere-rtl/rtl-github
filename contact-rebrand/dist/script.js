@@ -118,6 +118,13 @@ class LyricsApp extends HTMLElement {
             this.resetLyrics();
         });
 
+        const downloadButton = this.querySelector('.c-download-button');
+        downloadButton.addEventListener('click', () => {
+            const link = this.originLink + "lyrics/text/" + this.id + ".pdf";
+            console.log(link)
+            window.open(link, '_blank');
+        });
+
         this.content.addEventListener("scroll", this.handleScroll);
         this.player.onTimeUpdate((currentTime) => {
             const time = currentTime * 1000;
