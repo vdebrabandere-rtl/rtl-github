@@ -394,55 +394,58 @@ document.addEventListener('keydown', function(e) {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Select all videos that require scroll-based sound adjustment or autoplay
-    const videos = document.querySelectorAll('.js-scroll-sound, .js-autoplay, .js-header__video');
-    console.log(videos)
+    const videos = document.querySelectorAll('.js-scroll-sound, .js-autoplay');
 
     const observerOptions = {
         root: null, // Use the viewport as the root
-        threshold: 0.5 // Trigger when 50% of the video is visible
+        threshold: [0, 0.5, 1] // Multiple thresholds for finer control
     };
 
     const videoVisibilityChanged = (entries, observer) => {
         entries.forEach(entry => {
-            // For autoplay videos
-            if (entry.isIntersecting && entry.target.classList.contains('js-autoplay')) {
-                entry.target.play();
-            } else if (!entry.isIntersecting && entry.target.classList.contains('js-autoplay')) {
-                entry.target.pause();
-            }
-
-            // For scroll sound videos, adjust volume based on visibility
-            if (entry.target.classList.contains('js-scroll-sound') || entry.target.classList.contains('js-header__video')) {
-                const volume = entry.isIntersecting ? 1 : 0; // Simple visibility-based volume control
-                entry.target.volume = volume;
+            // Handle autoplay and pause for .js-autoplay videos
+            if (entry.target.classList.contains('js-autoplay')) {
+                if (entry.isIntersecting) {
+                    entry.target.play();
+                } else {
+                    entry.target.pause();
+                }
             }
         });
     };
 
     const observer = new IntersectionObserver(videoVisibilityChanged, observerOptions);
+    videos.forEach(video => observer.observe(video));
 
-    videos.forEach(video => {
-        observer.observe(video); // Observe each video
-    });
+    // Function to adjust volume based on scroll for .js-scroll-sound videos
+    const adjustVideoVolumeOnScroll = () => {
+        videos.forEach(video => {
+            if (!video.classList.contains('js-scroll-sound')) return;
 
-    // Adjust the volume based on scroll position for videos with class js-scroll-sound
-    window.addEventListener('scroll', () => {
-        document.querySelectorAll('.js-scroll-sound .js-header__video').forEach(video => {
-            adjustVolumeBasedOnScroll(video);
+            const videoRect = video.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            let volume = 1;
+
+            // Adjust volume based on the video's vertical position in the viewport
+            if (videoRect.top < viewportHeight && videoRect.bottom > 0) {
+                // Video is partially visible
+                const visibleHeight = Math.min(videoRect.bottom, viewportHeight) - Math.max(videoRect.top, 0);
+                volume = visibleHeight / videoRect.height;
+            } else if (videoRect.bottom <= 0 || videoRect.top >= viewportHeight) {
+                // Video is completely out of view
+                volume = 0;
+            }
+
+            video.volume = Math.max(0, Math.min(volume, 1)); // Ensure volume is between 0 and 1
         });
-    });
+    };
 
-    function adjustVolumeBasedOnScroll(video) {
-        const videoRect = video.getBoundingClientRect();
-        const videoCenter = videoRect.top + videoRect.height / 2;
-        const viewportCenter = window.innerHeight / 2;
-        const maxDistance = window.innerHeight / 2;
-        const distanceFromCenter = Math.abs(videoCenter - viewportCenter);
-        let volume = 1 - (distanceFromCenter / maxDistance);
-        volume = Math.max(0, Math.min(1, volume)); // Ensure volume is between 0 and 1
-        video.volume = volume;
-    }
+    // Adjust volume on scroll and on load
+    window.addEventListener('scroll', adjustVideoVolumeOnScroll);
+    adjustVideoVolumeOnScroll();
 });
+
+
 
 // Code for handling keyboard events remains the same
 
