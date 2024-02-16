@@ -11,17 +11,29 @@ document.addEventListener('keydown', function(e) {
 
 const video = document.querySelector('.js-header__video');
 
-// Track the scroll position
 window.addEventListener('scroll', () => {
-    // Get the distance from the top of the viewport to the top of the video
-    const videoTop = video.getBoundingClientRect().top;
+    // Get the video's position relative to the viewport
+    const videoRect = video.getBoundingClientRect();
+    const videoTop = videoRect.top;
+    const videoHeight = videoRect.height;
+    
+    // Calculate the center of the video in relation to the viewport
+    const videoCenter = videoTop + videoHeight / 2;
+    const viewportCenter = window.innerHeight / 2;
 
-    // If the video is outside the viewport by at least 500px, decrease the volume
-    if (videoTop < -500 || videoTop > window.innerHeight) {
-        video.volume = 0.2; // Adjust the volume as needed
-    } else {
-        video.volume = 1; // Reset the volume
-    }
+    // Determine the maximum distance for volume adjustment (e.g., half the viewport height)
+    const maxDistance = window.innerHeight / 2;
+
+    // Calculate the distance of the video's center from the viewport's center
+    const distanceFromCenter = Math.abs(videoCenter - viewportCenter);
+
+    // Calculate the volume based on the distance from center
+    // Volume should be 1 when the distance is 0 and decrease to 0 as it reaches or exceeds maxDistance
+    let volume = 1 - (distanceFromCenter / maxDistance);
+    volume = Math.max(0, Math.min(1, volume)); // Ensure volume is between 0 and 1
+
+    // Set the video volume
+    video.volume = volume;
 });
 
 const images = document.querySelectorAll('.c-loading__img');
