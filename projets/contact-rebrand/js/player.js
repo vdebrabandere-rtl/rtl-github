@@ -5,17 +5,15 @@ class customPlayer extends HTMLElement {
 
     connectedCallback() {
         this.src = this.getAttribute("src");
-
         this.assetsOrigin = "https://raw.githubusercontent.com/vdebrabandere-rtl/ressources/main/contact-rebrand/assets/svg/";
         this.render();
         this.video = this.querySelector("video");
         this.playPauseButton = this.querySelector(".c-player__play");
         this.playPauseIcon = this.playPauseButton.querySelector("img");
-        this.initEventListeners()
+        this.initEventListeners();
     }
 
     render() {
-        // Styles and content as previously defined
         const content = `
             <div class="c-player">
                 <button class="c-player__play"><img src="${this.assetsOrigin}/play.svg" alt="Play icon"></button>
@@ -29,41 +27,51 @@ class customPlayer extends HTMLElement {
                 </video>
             </div>
         `;
-    
+
         this.innerHTML = `${content}`;
     }
-    
+
     initEventListeners() {
         const wave = this.querySelector('.c-player__wave');
         const clippedWave = this.querySelector('.c-player__wave-svg--clipped');
-    
+
         this.playPauseButton.addEventListener("click", () => this.togglePlayPause());
-    
-        // Updated to call updateClip directly with the correct argument
+
         this.video.addEventListener("timeupdate", () => this.updateClip(clippedWave));
-    
+
+        this.video.addEventListener("ended", () => {
+            this.playPauseIcon.src = `${this.assetsOrigin}/play.svg`;
+        });
+
         wave.addEventListener("click", e => this.calculSeek(e, wave));
         wave.addEventListener("mousemove", e => this.hoverWave(e, wave));
         wave.addEventListener("mouseleave", () => this.leaveWave());
     }
-    
 
-    togglePlayPause() { 
+    togglePlayPause() {
+        const allPlayers = document.querySelectorAll('custom-player');
+        allPlayers.forEach(player => {
+            if (player !== this && !player.video.paused) {
+                player.video.pause();
+                player.playPauseIcon.src = `${player.assetsOrigin}/play.svg`;
+            }
+        });
+    
         if (this.video.paused) {
             this.video.play();
             this.playPauseIcon.src = `${this.assetsOrigin}/pause.svg`;
         } else {
             this.video.pause();
-            this.playPauseIcon .src = `${this.assetsOrigin}/play.svg`;
+            this.playPauseIcon.src = `${this.assetsOrigin}/play.svg`;
         }
     }
+    
 
     updateClip(clippedWave) {
         const percentage = this.video.currentTime / this.video.duration * 100;
         clippedWave.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-        requestAnimationFrame(() => this.updateClip(this.video, clippedWave));
+        requestAnimationFrame(() => this.updateClip(clippedWave));
     }
-    
 
     calculSeek(e, wave) {
         if (!this.video) {
@@ -75,7 +83,7 @@ class customPlayer extends HTMLElement {
         const percentage = x / wave.offsetWidth;
         this.video.currentTime = percentage * this.video.duration;
     }
-    
+
     hoverWave(e, wave) {
         const hoverWave = this.querySelector('.c-player__wave-svg--hover');
         const rect = wave.getBoundingClientRect();
@@ -97,7 +105,6 @@ class customPlayer extends HTMLElement {
         this.video.currentTime = time;
     }
 
-    // You might also want to expose event listeners to the outside
     onTimeUpdate(callback) {
         this.video.addEventListener("timeupdate", () => callback(this.video.currentTime));
     }
