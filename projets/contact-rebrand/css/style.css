@@ -51,12 +51,11 @@ html, body{
 }
 
 .c-loading__button {
-    position: absolute;
-    top: 50%;
+    position: fixed !important;
     bottom: calc(32px + 10%);
-    translate: -50%, -50%;
+    left: 50%;
+    translate: -50% -50%;
     z-index: 999999;
-
     pointer-events: none;
     opacity: 0;
     scale: 0;
