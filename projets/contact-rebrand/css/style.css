@@ -55,6 +55,7 @@ html, body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999999;
 
     pointer-events: none;
     opacity: 0;
@@ -66,5 +67,6 @@ html, body{
 .c-loading__button.visble {
     opacity: 1;
     pointer-events: all;
+    cursor: pointer;
     scale: 1;
 }
