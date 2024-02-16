@@ -40,11 +40,6 @@ window.addEventListener('scroll', () => {
 const images = document.querySelectorAll('.c-loading__img');
 const button = document.querySelector('.c-loading__button');
 
-//  block the user scroll while there is the loading page
-
-document.body.style.overflow = 'hidden';
-
-
 let i = 0;
 function changeImage() {
     if (i > 0 && i < images.length) {
@@ -67,9 +62,6 @@ setTimeout(() => {
     button.addEventListener('click', function() {
     // Hide the loading screen
     document.querySelector('.c-loading-screen').style.display = 'none';
-
-    // Allow the user to scroll
-    document.body.style.overflow = 'auto';
     
 
     video.play();
