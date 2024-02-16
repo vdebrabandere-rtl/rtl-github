@@ -1,8 +1,10 @@
 {
-  "name": "Maria Del Rio",
+  "name": "Philippe Jaumain",
   "id": "philippe",
+  "function": "Directeur marketing et communication",
   "title": "J'adore la nouvelle identité",
   "lyrics": [
+    { "line": "", "time": -1 },
     {
       "line": "Alors en 2023, donc l'année passée,",
       "time": 800
