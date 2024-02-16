@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Adjust the volume based on scroll position for videos with class js-scroll-sound
     window.addEventListener('scroll', () => {
-        document.querySelectorAll('.js-scroll-sound  .js-header__video').forEach(video => {
+        document.querySelectorAll('.js-scroll-sound .js-header__video').forEach(video => {
             adjustVolumeBasedOnScroll(video);
         });
     });
