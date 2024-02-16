@@ -398,31 +398,22 @@ window.addEventListener('scroll', () => {
     // Get the video's position relative to the viewport
     const videoRect = video.getBoundingClientRect();
     const videoTop = videoRect.top;
-    const videoBottom = videoRect.bottom;
-    const viewportHeight = window.innerHeight;
+    const videoHeight = videoRect.height;
+    
+    // Calculate the center of the video in relation to the viewport
+    const videoCenter = videoTop + videoHeight / 2;
+    const viewportCenter = window.innerHeight / 2;
 
-    // Determine the maximum distance for volume adjustment
-    const maxDistance = 750; // Diminution over 750px
+    // Determine the maximum distance for volume adjustment (e.g., half the viewport height)
+    const maxDistance = window.innerHeight / 2;
 
-    let volume = 1;
+    // Calculate the distance of the video's center from the viewport's center
+    const distanceFromCenter = Math.abs(videoCenter - viewportCenter);
 
-    // Check if the video is moving off the top of the screen
-    if (videoBottom < 0) {
-        let distanceFromViewportTop = Math.abs(videoBottom);
-        volume = 1 - (distanceFromViewportTop / maxDistance);
-    }
-    // Check if the video is moving off the bottom of the screen
-    else if (videoTop > viewportHeight) {
-        let distanceFromViewportBottom = videoTop - viewportHeight;
-        volume = 1 - (distanceFromViewportBottom / maxDistance);
-    }
-    // If the video is fully within the viewport, set volume to 1
-    else if (videoTop >= 0 && videoBottom <= viewportHeight) {
-        volume = 1;
-    }
-
-    // Ensure volume is between 0 and 1
-    volume = Math.max(0, Math.min(1, volume));
+    // Calculate the volume based on the distance from center
+    // Volume should be 1 when the distance is 0 and decrease to 0 as it reaches or exceeds maxDistance
+    let volume = 1 - (distanceFromCenter / maxDistance);
+    volume = Math.max(0, Math.min(1, volume)); // Ensure volume is between 0 and 1
 
     // Set the video volume
     video.volume = volume;
@@ -432,7 +423,9 @@ window.addEventListener('scroll', () => {
 const images = document.querySelectorAll('.c-loading__img');
 const button = document.querySelector('.c-loading__button');
 
-document.body.style.overflowY = 'hidden';
+//  block the user scroll while there is the loading page
+
+document.body.style.overflow = 'hidden';
 
 
 let i = 0;
@@ -457,7 +450,9 @@ setTimeout(() => {
     button.addEventListener('click', function() {
     // Hide the loading screen
     document.querySelector('.c-loading-screen').style.display = 'none';
-    document.body.style.overflowY = 'auto';
+
+    // Allow the user to scroll
+    document.body.style.overflow = 'auto';
     
 
     video.play();
