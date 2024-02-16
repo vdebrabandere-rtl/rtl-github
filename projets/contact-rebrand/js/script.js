@@ -64,7 +64,6 @@ setTimeout(() => {
     window.scrollTo(0, 0);
     document.querySelector('.c-loading-screen').style.display = 'none';
     //  reset scroll position to 0
-    
 
     video.play();
 });
