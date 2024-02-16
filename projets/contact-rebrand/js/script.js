@@ -56,7 +56,7 @@ setTimeout(changeImage, 1000);
 
 setTimeout(() => {
     button.classList.add('visble');
-}, 4000);
+}, 2000);
 
     // Event listener for the button click
     button.addEventListener('click', function() {
