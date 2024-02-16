@@ -1,3 +1,70 @@
 html, body{
     overflow-x: hidden;
 }
+
+.c-loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 999999999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #0050ff;
+}
+
+.c-loading__images {
+    position: relative;
+    width: 100%;
+    max-width: 1040px;
+    aspect-ratio: 16/9;
+    margin: 10%;
+    padding: 10%;
+    box-sizing: border-box;
+
+    animation: scale 7s cubic-bezier(0.06, 0.64, 0.28, 1);
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.c-loading__img {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+}
+
+.c-loading__img.visble {
+    display: block;
+}
+
+.c-loading__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+    opacity: 0;
+    scale: 0;
+    transform-origin: center center;
+    transition: all .8s;
+}
+
+.c-loading__button.visble {
+    opacity: 1;
+    pointer-events: all;
+    scale: 1;
+}
