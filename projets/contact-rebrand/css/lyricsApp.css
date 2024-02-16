@@ -74,7 +74,7 @@ lyrics-app::after {
 }
 
 .c-app__bg {
-    --blur-size: 25px;
+    --blur-size: calc(25px + 1vw);
     position: absolute;
     inset: calc(-1 * var(--blur-size));
 
@@ -86,7 +86,7 @@ lyrics-app::after {
 }
 
 lyrics-app.sticky .c-app__bg {
-    --blur-size: 35px;
+    --blur-size: calc(35px + 1vw);;
     opacity: 0.3;
     transition: all 0.5s ease-out;
 }

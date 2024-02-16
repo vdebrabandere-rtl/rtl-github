@@ -3,10 +3,10 @@ class LyricsApp extends HTMLElement {
     constructor() {
         super();
         this.id = this.getAttribute("id");
-        this.originLink = "https://raw.githubusercontent.com/vdebrabandere-rtl/ressources/main/contact-rebrand/";
-        this.dataOrigin = this.originLink + "/lyrics/json/";
+        this.originLink = "https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/";
+        this.dataOrigin = this.originLink + "lyrics/json/";
         this.imageOrigin = this.originLink + "animateurs-pictures/";
-        this.soundOrigin = this.originLink + "/lyrics/sounds/";
+        this.soundOrigin = this.originLink + "lyrics/sounds/";
         this._data = null;
         this.freeScroll = false;
         this.isAutoScrolling = false;
@@ -37,8 +37,7 @@ class LyricsApp extends HTMLElement {
     }
 
     async fetchDatas() {
-        // const link = this.dataOrigin + this.id + ".json";
-        const link ="/contact-rebrand/convert/result/" + this.id + ".json";
+        const link = this.dataOrigin + this.id + ".json";
 
         try {
             const response = await fetch(link);
@@ -120,7 +119,7 @@ class LyricsApp extends HTMLElement {
 
         const downloadButton = this.querySelector('.c-download-button');
         downloadButton.addEventListener('click', () => {
-            const link = this.originLink + "lyrics/text/philippe.pdf";
+            const link = this.originLink + "lyrics/text/" + this._data.id +".pdf";
             console.log(link)
             window.open(link, '_blank');
         });
