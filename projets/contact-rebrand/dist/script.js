@@ -392,7 +392,9 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-const video = document.querySelector('.js-header__video');
+console.log("test")
+
+// const video = document.querySelector('.js-header__video');
 
 // // Track the scroll position
 // window.addEventListener('scroll', () => {
