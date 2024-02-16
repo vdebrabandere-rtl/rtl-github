@@ -515,6 +515,7 @@ body {
     scale: 0;
     transform-origin: center center;
     transition: all .8s;
+    background-color: var(--bleu-contact);
 }
 
 .c-loading__button.visble {
