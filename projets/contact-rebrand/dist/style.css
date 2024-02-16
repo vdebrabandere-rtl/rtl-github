@@ -85,6 +85,14 @@ lyrics-app::after {
     pointer-events: none;
 }
 
+lyrics-app .c-player {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+}
+
 .c-app__bar {
     position: absolute;
     bottom: 10px;
@@ -373,12 +381,6 @@ lyrics-app.sticky .c-app__bg {
     transition: transform 0.25s ease-in-out;
 }
 .c-player {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    width: 100%;
-
     display: flex;
     justify-content: center;
     gap: 18px;
@@ -388,7 +390,7 @@ lyrics-app.sticky .c-app__bg {
     width: 80%;
     max-width: 400px;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 36px;
 }
 
 .c-player video{

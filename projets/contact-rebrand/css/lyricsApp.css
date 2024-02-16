@@ -60,6 +60,14 @@ lyrics-app::after {
     pointer-events: none;
 }
 
+lyrics-app .c-player {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100%;
+}
+
 .c-app__bar {
     position: absolute;
     bottom: 10px;
