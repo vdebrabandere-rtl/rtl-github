@@ -37,32 +37,62 @@ window.addEventListener('scroll', () => {
 });
 
 
-const images = document.querySelectorAll('.c-loading__img');
-const button = document.querySelector('.c-loading__button');
-
-let i = 0;
-function changeImage() {
+// Function to prevent default behavior (scrolling)
+function preventScroll(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+  
+  // Function to disable scrolling
+  function disableScroll() {
+    // Add event listener to block scroll events
+    window.addEventListener('scroll', preventScroll, { passive: false });
+    window.addEventListener('wheel', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+  }
+  
+  // Function to enable scrolling
+  function enableScroll() {
+    // Remove event listener to allow scroll events
+    window.removeEventListener('scroll', preventScroll);
+    window.removeEventListener('wheel', preventScroll);
+    window.removeEventListener('touchmove', preventScroll);
+  }
+  
+  // Initially disable scrolling when the loading screen is active
+  disableScroll();
+  
+  const images = document.querySelectorAll('.c-loading__img');
+  const button = document.querySelector('.c-loading__button');
+  
+  let i = 0;
+  function changeImage() {
     if (i > 0 && i < images.length) {
-        images[i - 1].classList.remove('visble');
+      images[i - 1].classList.remove('visble');
     }
     if (i < images.length) {
-        images[i].classList.add('visble');
-        const timing = 300 * (i + 1) / 2;
-        setTimeout(changeImage, timing);
+      images[i].classList.add('visble');
+      const timing = 300 * (i + 1) / 2;
+      setTimeout(changeImage, timing);
     }
     i++;
-}
-setTimeout(changeImage, 1000);
-
-setTimeout(() => {
+  }
+  setTimeout(changeImage, 1000);
+  
+  setTimeout(() => {
     button.classList.add('visble');
-}, 4000);
-
-    // Event listener for the button click
-    button.addEventListener('click', function() {
+  }, 4000);
+  
+  // Event listener for the button click
+  button.addEventListener('click', function() {
     // Hide the loading screen
     document.querySelector('.c-loading-screen').style.display = 'none';
     
-
+    // Re-enable scrolling
+    enableScroll();
+  
+    // Play the video
     video.play();
-});
+  });
+  
