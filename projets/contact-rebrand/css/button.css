@@ -1,3 +1,4 @@
+
 .c-button::before{
     content: " ";
     display: block;
@@ -8,8 +9,6 @@
     right: -8px;
 
     border: 2px solid var(--deco-bleu-clair);
-    backdrop-filter: blur(8px);
-    filter: drop-shadow(0 6px 8px var(--deco-bleu-profond));
 
     border-radius: calc(12px + 3px);
     z-index: -1;
