@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     overflow-x: hidden;
 }
 
@@ -16,8 +17,9 @@ html, body{
 
 .c-loading__images {
     position: relative;
-    width: 100%;
-    max-width: 1040px;
+    width: 80%;;
+    max-width: 750px;
+    max-height: 50%;
     aspect-ratio: 16/9;
     margin: 10%;
     padding: 10%;
@@ -42,7 +44,7 @@ html, body{
     top: 0;
     left: 0;
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -62,6 +64,7 @@ html, body{
     transform-origin: center center;
     transition: all .8s;
 }
+
 .c-loading__button.visble {
     opacity: 1;
     pointer-events: all;

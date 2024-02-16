@@ -8,6 +8,8 @@
     right: -8px;
 
     border: 2px solid var(--deco-bleu-clair);
+    backdrop-filter: blur(8px);
+    filter: drop-shadow(0 6px 8px var(--deco-bleu-profond));
 
     border-radius: calc(12px + 3px);
     z-index: -1;
@@ -448,7 +450,8 @@ lyrics-app.sticky .c-app__bg {
 .c-player__wave-svg--hover{
     clip-path: inset(0 100% 0 0);
 }
-html, body{
+html,
+body {
     overflow-x: hidden;
 }
 
@@ -466,8 +469,9 @@ html, body{
 
 .c-loading__images {
     position: relative;
-    width: 100%;
-    max-width: 1040px;
+    width: 80%;;
+    max-width: 750px;
+    max-height: 50%;
     aspect-ratio: 16/9;
     margin: 10%;
     padding: 10%;
@@ -492,7 +496,7 @@ html, body{
     top: 0;
     left: 0;
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
     object-fit: contain;
 }
 
@@ -512,6 +516,7 @@ html, body{
     transform-origin: center center;
     transition: all .8s;
 }
+
 .c-loading__button.visble {
     opacity: 1;
     pointer-events: all;

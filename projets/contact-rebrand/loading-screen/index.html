@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="c-loading-screen">
+        <div class="c-loading__images">
+            <img class="c-loading__img"
+                 src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/old-logos/1.png"
+                 alt="Logo 1">
+            <img class="c-loading__img"
+                 src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/old-logos/2.png"
+                 alt="Logo 2">
+            <img class="c-loading__img"
+                 src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/old-logos/3.png"
+                 alt="Logo 3">
+            <img class="c-loading__img"
+                 src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/old-logos/4.png"
+                 alt="Logo 4">
+            <img class="c-loading__img"
+                 src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/old-logos/5.png"
+                 alt="Logo 5">
+            <img class="c-loading__img"
+                 src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/old-logos/6.png"
+                 alt="Logo 6">
+                </div>
+            <button class="c-loading__button"> Découvrir le nouveau logo</button>
+    </div>
+
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+        }
+    
+        .c-loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 999999999;
+    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            background-color: #0050ff;
+        }
+    
+        .c-loading__images {
+            position: relative;
+            width: 80%;;
+            max-width: 750px;
+            max-height: 50%;
+            aspect-ratio: 16/9;
+            margin: 10%;
+            padding: 10%;
+            box-sizing: border-box;
+    
+            animation: scale 7s cubic-bezier(0.06, 0.64, 0.28, 1);
+        }
+    
+        @keyframes scale {
+            0% {
+                transform: scale(.5);
+            }
+    
+            100% {
+                transform: scale(1);
+            }
+        }
+    
+        .c-loading__img {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    
+        .c-loading__img.visble {
+            display: block;
+        }
+    
+        .c-loading__button {
+            position: fixed !important;
+            bottom: calc(32px + 10%);
+            left: 50%;
+            translate: -50% -50%;
+            z-index: 999999;
+            pointer-events: none;
+            opacity: 0;
+            scale: 0;
+            transform-origin: center center;
+            transition: all .8s;
+        }
+    
+        .c-loading__button.visble {
+            opacity: 1;
+            pointer-events: all;
+            cursor: pointer;
+            scale: 1;
+        }
+    </style>
+    
+    <script>
+        const images = document.querySelectorAll('.c-loading__img');
+        const button = document.querySelector('.c-loading__button');
+        const video = document.querySelector('.js-header__video');
+    
+    
+        let i = 0;
+        function changeImage() {
+            if (i > 0 && i < images.length) {
+                images[i - 1].classList.remove('visble');
+            }
+            if (i < images.length) {
+                images[i].classList.add('visble');
+                const timing = 300 * (i + 1) / 2;
+                setTimeout(changeImage, timing);
+            }
+            i++;
+        }
+        setTimeout(changeImage, 1000);
+    
+        setTimeout(() => {
+            button.classList.add('visble');
+        }, 4000);
+    
+        // Event listener for the button click
+        button.addEventListener('click', function () {
+            // Hide the loading screen
+            document.querySelector('.c-loading-screen').style.display = 'none';
+    
+    
+            video.play();
+        });
+    </script>
+</body>
+</html>
