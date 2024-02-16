@@ -15,14 +15,11 @@
 
   <script defer type="module" src="./js/lyricsApp.js"></script>
   <script defer type="module" src="./js/player.js"></script>
+  <script defer type="module" src="./js/script.js"></script>
 
 
   <style>
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
       background-color: #0050ff;
       box-sizing: border-box;
@@ -36,7 +33,13 @@
 
 </head>
 <body>
-  <lyrics-app id="maria"></lyrics-app>
+  <video class="c-header__video js-header__video " autoplay playsinline style="margin-bottom: 100vh; display: block; width: 100%; height: 100%; object-fit: cover;" src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/header-video.webm"></video>
+  <video class="c-header__video js-header__video js-scroll-sound " loop playsinline style="margin-bottom: 100vh; display: block; width: 100%; height: 100%; object-fit: cover;" src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/header-video.webm"></video>
+  
+  <video class="c-other video js-autoplay js-scroll-sound" loop playsinline style="margin-bottom: 100vh; display: block; width: 100%; height: 100%; object-fit: cover;" src="https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-rebrand/header-video.webm"></video>
+
+  
+
 </body>
 
 </html>

@@ -9,32 +9,59 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-const video = document.querySelector('.js-header__video');
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all videos that require scroll-based sound adjustment or autoplay
+    const videos = document.querySelectorAll('.js-scroll-sound, .js-autoplay, .js-header__video');
+    console.log(videos)
 
-window.addEventListener('scroll', () => {
-    // Get the video's position relative to the viewport
-    const videoRect = video.getBoundingClientRect();
-    const videoTop = videoRect.top;
-    const videoHeight = videoRect.height;
-    
-    // Calculate the center of the video in relation to the viewport
-    const videoCenter = videoTop + videoHeight / 2;
-    const viewportCenter = window.innerHeight / 2;
+    const observerOptions = {
+        root: null, // Use the viewport as the root
+        threshold: 0.5 // Trigger when 50% of the video is visible
+    };
 
-    // Determine the maximum distance for volume adjustment (e.g., half the viewport height)
-    const maxDistance = window.innerHeight / 2;
+    const videoVisibilityChanged = (entries, observer) => {
+        entries.forEach(entry => {
+            // For autoplay videos
+            if (entry.isIntersecting && entry.target.classList.contains('js-autoplay')) {
+                entry.target.play();
+            } else if (!entry.isIntersecting && entry.target.classList.contains('js-autoplay')) {
+                entry.target.pause();
+            }
 
-    // Calculate the distance of the video's center from the viewport's center
-    const distanceFromCenter = Math.abs(videoCenter - viewportCenter);
+            // For scroll sound videos, adjust volume based on visibility
+            if (entry.target.classList.contains('js-scroll-sound') || entry.target.classList.contains('js-header__video')) {
+                const volume = entry.isIntersecting ? 1 : 0; // Simple visibility-based volume control
+                entry.target.volume = volume;
+            }
+        });
+    };
 
-    // Calculate the volume based on the distance from center
-    // Volume should be 1 when the distance is 0 and decrease to 0 as it reaches or exceeds maxDistance
-    let volume = 1 - (distanceFromCenter / maxDistance);
-    volume = Math.max(0, Math.min(1, volume)); // Ensure volume is between 0 and 1
+    const observer = new IntersectionObserver(videoVisibilityChanged, observerOptions);
 
-    // Set the video volume
-    video.volume = volume;
+    videos.forEach(video => {
+        observer.observe(video); // Observe each video
+    });
+
+    // Adjust the volume based on scroll position for videos with class js-scroll-sound
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.js-scroll-sound').forEach(video => {
+            adjustVolumeBasedOnScroll(video);
+        });
+    });
+
+    function adjustVolumeBasedOnScroll(video) {
+        const videoRect = video.getBoundingClientRect();
+        const videoCenter = videoRect.top + videoRect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+        const maxDistance = window.innerHeight / 2;
+        const distanceFromCenter = Math.abs(videoCenter - viewportCenter);
+        let volume = 1 - (distanceFromCenter / maxDistance);
+        volume = Math.max(0, Math.min(1, volume)); // Ensure volume is between 0 and 1
+        video.volume = volume;
+    }
 });
+
+// Code for handling keyboard events remains the same
 
 
 const images = document.querySelectorAll('.c-loading__img');
@@ -63,6 +90,6 @@ setTimeout(() => {
     // Hide the loading screen
     window.scrollTo(0, 0);
     document.querySelector('.c-loading-screen').style.display = 'none';
-
+    const video = document.querySelector('.c-header__video');
     video.play();
 });
