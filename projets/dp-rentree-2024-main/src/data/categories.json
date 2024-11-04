@@ -1,0 +1,108 @@
+[
+  {
+    "title": "Les nouveautés",
+    "slug": "les-nouveautes",
+    "order": 1,
+    "icons": ["test", "test2"],
+    "childrens": [
+      {
+        "title": "Les nouvelles émissions",
+        "slug": "nouvelle-emissions",
+        "order": "a"
+      },
+      {
+        "title": "Les séries",
+        "slug": "les-series",
+        "order": "b"
+      },
+      {
+        "title": "Les films",
+        "slug": "les-films",
+        "order": "c"
+      },
+      {
+        "title": "La soirée crime du mardi",
+        "slug": "crime",
+        "order": "d"
+      }
+    ]
+  },
+  {
+    "title": "Les incontournables",
+    "slug": "les-references",
+    "order": 2,
+    "icons": ["test", "test2"],
+    "childrens": [
+      {
+        "title": "Très bientôt",
+        "slug": "tres-bientot",
+        "order": "a"
+      },
+      {
+        "title": "Humour",
+        "slug": "humour",
+        "order": "b"
+      },
+      {
+        "title": "Evénementielles",
+        "slug": "evenementielles",
+        "order": "c"
+      },
+      {
+        "title": "Récurrents",
+        "slug": "recurrents",
+        "order": "d"
+      }
+    ]
+  },
+  {
+    "title": "RTL info",
+    "slug": "info",
+    "order": 3,
+    "icons": ["test", "test2"]
+  },
+  {
+    "title": "RTL sports",
+    "slug": "sports",
+    "order": 4,
+    "icons": ["test", "test2"]
+  },
+  {
+    "title": "Les coproductions",
+    "slug": "coprod",
+    "order": 5,
+    "icons": ["test", "test2"],
+    "quote": [
+      {
+        "author": "Eusebio Larrea",
+        "content": "Test",
+        "slug": "test",
+        "work-title": "Nous sommes ravis d’accompagner Michiel Blanchart en tant que coproducteurs pour son premier long métrage. Un thriller au style percutant tourné dans Bruxelles, qui apporte un vent de fraîcheur dans le cinéma belge. Michiel fait sans aucun doute partie de la nouvelle génération des réalisateurs qui marquera. RTL Belgium est fier de le soutenir."
+      }
+    ]
+  },
+  {
+    "title": "Les radios",
+    "slug": "les-radios",
+    "order": 6,
+    "icons": ["test", "test2"],
+    "childrens": [
+      {
+        "title": "Radio Contact",
+        "slug": "radio-contact",
+        "order": "a"
+      },
+      {
+        "title": "bel RTL",
+        "slug": "bel-rtl",
+        "order": "b"
+      }
+    ]
+  },
+  {
+    "title": "Events",
+    "slug": "events",
+    "order": 7,
+    "icons": ["test", "test2"]
+  }
+]

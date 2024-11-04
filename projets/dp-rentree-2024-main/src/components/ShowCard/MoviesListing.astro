@@ -1,0 +1,62 @@
+---
+// ShowListing.astro
+
+import MovieCard from "./MovieCard.astro";
+
+import type { Show } from "../../types/Show";
+
+const shows: Show[] = Astro.props.shows;
+---
+
+<ul class="c-movie-list">
+  {
+    shows.map((show: Show) => (
+      <li class="c-movie-list__item">
+        <MovieCard {...show} />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  @import "../../scss/mq.scss";
+  @import "../../scss/mixins.scss";
+
+  .c-movie-list {
+    --grid-twist: 30px;
+
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 42px;
+    justify-content: center;
+    align-content: center;
+    place-items: center;
+
+    list-style: none;
+  }
+
+  .c-movie-list__item {
+    width: 100%;
+  }
+
+  @media screen and (min-width: $mq-tablet) {
+    .c-movie-list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include apply-twist(3);
+  }
+
+  @media screen and (min-width: $mq-desktop) {
+    .c-movie-list {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @include apply-twist(4);
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Categorie from "./Category.astro";
+import type {CategoryType}  from "../../types/Category";
+
+import categories from "../../data/categories.json";
+---
+
+<ul class="c-category-listing">
+
+    {
+        categories.map((category: CategoryType) => (
+            <Categorie {category} />
+        ))
+    }
+
+</ul>
+
+<style lang="scss">
+
+    .c-category-listing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 50px;
+        margin: 0;
+        padding: 0;
+    }
+</style>
