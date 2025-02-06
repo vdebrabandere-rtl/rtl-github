@@ -11,7 +11,6 @@ class LyricsApp extends HTMLElement {
         this.freeScroll = false;
         this.isAutoScrolling = false;
         this.currentLine = null;
-
         this.handleScroll = this.handleScroll.bind(this);
     }
 
@@ -51,6 +50,24 @@ class LyricsApp extends HTMLElement {
     }
     render() {
         const content = `
+        <div class="c-top-bar">
+            <div class="c-header sticky">
+                <div class="c-header__icon">
+                    <img class="c-header__img" src="${this.imageOrigin}${this.id}.jpg" alt="">
+                </div>
+                <div class="c-header__text">
+                    <h3 class="c-header__title">${this._data.title}</h3>
+                    <p class="c-header__subtitle">${this._data.name}</p>
+                </div>
+            </div>
+            <button class="c-download-button">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.4946 15.9706V19.9706C21.4946 20.501 21.2839 21.0097 20.9088 21.3848C20.5338 21.7599 20.0251 21.9706 19.4946 21.9706H5.49463C4.9642 21.9706 4.45549 21.7599 4.08042 21.3848C3.70534 21.0097 3.49463 20.501 3.49463 19.9706V15.9706" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.49463 10.9706L12.4946 15.9706L17.4946 10.9706" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.4946 15.9706V3.97058" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
         <div class="c-content">
             <div class="c-header">
                 <div class="c-header__icon">
@@ -64,13 +81,6 @@ class LyricsApp extends HTMLElement {
             </div>
             <div class="c-lyrics"></div>
         </div>
-        <button class="c-download-button">
-            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21.4946 15.9706V19.9706C21.4946 20.501 21.2839 21.0097 20.9088 21.3848C20.5338 21.7599 20.0251 21.9706 19.4946 21.9706H5.49463C4.9642 21.9706 4.45549 21.7599 4.08042 21.3848C3.70534 21.0097 3.49463 20.501 3.49463 19.9706V15.9706" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M7.49463 10.9706L12.4946 15.9706L17.4946 10.9706" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12.4946 15.9706V3.97058" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
         <button class="c-reset-button">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24.008 14.1V42M12 26L24 14L36 26M12 6H36" stroke="white" stroke-width="4" stroke-linecap="round"
@@ -165,6 +175,16 @@ class LyricsApp extends HTMLElement {
                 this.isAutoScrolling = false;
             }, 100);
         }
+    
+        // Check scroll position
+        const contentScrollTop = this.content.scrollTop;
+        const threshold = 50; // Adjust threshold if needed
+    
+        if (contentScrollTop > threshold) {
+            this.classList.add("scrolled");
+        } else {
+            this.classList.remove("scrolled");
+        }
     }
 
     alignLyrics() {
@@ -228,42 +248,6 @@ class LyricsApp extends HTMLElement {
 
     seek(time) {
         if (this.player) this.player.currentTime = time;
-    }
-
-    initHeader() {
-        const header = this.querySelector(".c-header");
-        let originalHeaderPos = header.offsetTop;
-        this.adjustHeaderSize(header);
-        window.addEventListener("resize", () => this.adjustHeaderSize(header));
-        this.content.addEventListener("scroll", () => {
-            let headerNewPos = header.offsetTop;
-
-            if (originalHeaderPos !== headerNewPos) {
-                header.classList.add("sticky");
-                this.classList.add("sticky");
-            }
-            if (this.content.scrollTop < originalHeaderPos) {
-                header.classList.remove("sticky");
-                this.classList.remove("sticky");
-            }
-        });
-    }
-    adjustHeaderSize(header) {
-        let headerHeight = header.clientHeight;
-        header.style.height = `${headerHeight}px`;
-        this.headerHeight = headerHeight;
-        const headerChildren = header.children;
-        let headerChildrenHeight = 18;
-        for (let i = 0; i < headerChildren.length; i++) {
-            headerChildrenHeight += headerChildren[i].clientHeight;
-            headerChildren[i].style.position = "absolute";
-        }
-        if (headerChildrenHeight > headerHeight) {
-            header.style.height = `${headerChildrenHeight}px`;
-            this.headerHeight = headerHeight;
-        }
-        const headerSubtitle = this.querySelector(".c-header__subtitle");
-        headerSubtitle.style.position = "absolute";
     }
 }
 customElements.define("lyrics-app", LyricsApp);
