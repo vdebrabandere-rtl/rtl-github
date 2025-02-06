@@ -293,7 +293,7 @@ lyrics-app.sticky .c-app__bg {
     display: flex;
     flex-direction: column;
 
-    gap: 6px;
+    gap: 12px;
 }
 
 .c-lyrics__line {
