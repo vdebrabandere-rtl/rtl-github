@@ -429,28 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
     adjustVideoVolumeOnScroll();
 });
 
-
-
-// Code for handling keyboard events remains the same
-
-
-const images = document.querySelectorAll('.c-loading__img');
-const button = document.querySelector('.c-loading__button');
-
-let i = 0;
-function changeImage() {
-    if (i > 0 && i < images.length) {
-        images[i - 1].classList.remove('visble');
-    }
-    if (i < images.length) {
-        images[i].classList.add('visble');
-        const timing = 300 * (i + 1) / 2;
-        setTimeout(changeImage, timing);
-    }
-    i++;
-}
-setTimeout(changeImage, 1000);
-
 setTimeout(() => {
     button.classList.add('visble');
 }, 0);
