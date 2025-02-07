@@ -5,7 +5,7 @@ class LyricsApp extends HTMLElement {
         this.id = this.getAttribute("id");
         this.originLink = "https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-max/";
         this.dataOrigin = this.originLink + "lyrics/json/";
-        this.imageOrigin = this.originLink + "lyrics/cover";
+        this.imageOrigin = this.originLink + "lyrics/cover/";
         this.soundOrigin = this.originLink + "lyrics/sounds/";
         this._data = null;
         this.freeScroll = false;
