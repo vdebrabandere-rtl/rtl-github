@@ -5,7 +5,7 @@ class LyricsApp extends HTMLElement {
         this.id = this.getAttribute("id");
         this.originLink = "https://vdebrabandere-rtl.github.io/rtl-github/ressources/contact-max/";
         this.dataOrigin = this.originLink + "lyrics/json/";
-        this.imageOrigin = this.originLink + "animateurs-pictures/";
+        this.imageOrigin = this.originLink + "lyrics/cover";
         this.soundOrigin = this.originLink + "lyrics/sounds/";
         this._data = null;
         this.freeScroll = false;
@@ -130,14 +130,12 @@ class LyricsApp extends HTMLElement {
         const downloadButton = this.querySelector('.c-download-button');
         downloadButton.addEventListener('click', () => {
             const link = this.originLink + "lyrics/text/" + this._data.id +".pdf";
-            console.log(link)
             window.open(link, '_blank');
         });
 
         this.content.addEventListener("scroll", this.handleScroll);
         this.player.onTimeUpdate((currentTime) => {
             const time = currentTime * 1000;
-            console.log(time)
             const nextLineIndex = this._data.lyrics.findIndex(
                 (line) => line.time > time
             );
