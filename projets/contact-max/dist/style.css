@@ -123,7 +123,7 @@ lyrics-app.scrolled::before {
     inset: calc(-1 * var(--blur-size));
 
     filter: blur(var(--blur-size));
-    background-color: #0050ff;
+    background-color: #00007C;
     opacity: 0.5;
 
     z-index: -1;
