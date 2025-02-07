@@ -444,6 +444,7 @@ lyrics-app.sticky .c-app__bg {
 .c-player__play img{
     width: 100%;
     height: 100%;
+    pointer-events: none;
     transition: transform 0.25s ease-in-out;
 }
 
