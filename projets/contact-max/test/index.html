@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lines</title>
+
+    
+</head>
+<body>
+        <div class="c-line c-line--big"></div>
+        <div class="c-line c-line--small"></div>
+    <style>
+        .c-line {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 100%;
+
+            border-radius: 25px;
+            filter: drop-shadow(-6px 0 8px #00007c26);
+        }
+
+        .c-line--small {
+            right: 5px;
+            height: calc(100% + 24px);
+
+            background-color: #64CCFC;
+        }
+
+        .c-line--big {
+            width: 30px;
+            background-color: #0167FD;
+            filter: drop-shadow(-6px 0 12px #00007c26);
+
+        }
+    </style>
+</body>
+</html>

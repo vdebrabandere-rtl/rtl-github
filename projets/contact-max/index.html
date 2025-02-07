@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Music Player With Lyrics</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- <link rel="stylesheet" href="https://vdebrabandere-rtl.github.io/rtl-github/projets/contact-rebrand/dist/style.css">
+  <script defer type="module" src="https://vdebrabandere-rtl.github.io/rtl-github/projets/contact-rebrand/dist/script.js"></script> -->
+  
+  <link rel="stylesheet" href="./css/button.css">
+  <link rel="stylesheet" href="./css/lyricsApp.css">
+  <link rel="stylesheet" href="./css/player.css">
+
+  <script defer type="module" src="./js/lyricsApp.js"></script>
+  <script defer type="module" src="./js/player.js"></script>
+  <script defer type="module" src="./js/script.js"></script>
+
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #0050ff;
+      box-sizing: border-box;
+    }
+
+    body a {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <lyrics-app style="width: 100%; max-width: 1040px; height: 90vh; box-sizing: border-box;" id="philippe"></lyrics-app>
+
+  </div>
+
+</body>
+
+<style>
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 12px;
+    min-height: 100vh;
+    display: flex;
+    place-content: center;
+    box-sizing: border-box;
+  }
+</style>
+
+</html>
