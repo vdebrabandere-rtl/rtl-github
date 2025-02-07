@@ -429,6 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
     adjustVideoVolumeOnScroll();
 });
 
+
+
+// Code for handling keyboard events remains the same
+const button = document.querySelector('.c-loading__button');
+
 setTimeout(() => {
     button.classList.add('visble');
 }, 0);
