@@ -88,5 +88,5 @@ function convertAllSrtFilesInFolder(folderPath) {
 }
 
 // Usage
-const srtFolderPath = '/Users/Valou/code/rtl-projets/contact-rebrand/convert/srt';
+const srtFolderPath = '/Users/Valou/code/rtl-github/projets/contact-max/convert/srt';
 convertAllSrtFilesInFolder(srtFolderPath);

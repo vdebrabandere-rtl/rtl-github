@@ -1,162 +1,240 @@
 ﻿1
-00:00:01,034 --> 00:00:06,673
-Divertir, rassembler, informer et accompagner les Belges francophones dans leur quotidien,
+00:00:00,400 --> 00:00:04,360
+Alors on a eu envie de créer Contact
+Max parce qu'on a envie
 
 2
-00:00:06,673 --> 00:00:11,111
-Ce sont évidemment les valeurs de Radio Contact depuis sa création en 1980.
+00:00:04,360 --> 00:00:08,760
+de faire plaisir aux auditeurs
+et pas à n'importe quels auditeurs .
 
 3
-00:00:11,111 --> 00:00:14,647
-Suite à une réflexion qui a nécessité
-plusieurs mois de travail,
+00:00:09,120 --> 00:00:13,360
+A ceux qui ont grandi avec Radio
+Contact dans les années 80,
 
 4
-00:00:14,647 --> 00:00:18,284
-c'est aujourd'hui l'ensemble de l'identité de Radio Contact qui évolue.
+00:00:13,680 --> 00:00:17,560
+dans les années 90,
+Radio Contact est une radio historique,
 
 5
-00:00:18,284 --> 00:00:22,822
-C’est son site web, son application, ses radios digitales, sa communication externe, 
+00:00:17,560 --> 00:00:22,920
+une marque belge francophone qui est fort
+appréciée par un très large public.
 
 6
-00:00:22,822 --> 00:00:29,029
-ses spots télé, la radio vision, etc.
-C'est vraiment un gros travail.
+00:00:23,120 --> 00:00:25,080
+Et on s'est dit tiens,
+il y a des auditeurs
 
 7
-00:00:29,029 --> 00:00:35,035
-L'ADN de Radio Contact ne va pas changer : elle reste celle que 478 000 auditeurs plébiscitent chaque jour
+00:00:25,080 --> 00:00:28,520
+qui ont peut être envie
+de retrouver la radio
 
 8
-00:00:35,035 --> 00:00:38,905
-grâce au dynamisme de ses animateurs et journalistes,
-mais aussi de toute son équipe.
+00:00:28,520 --> 00:00:32,280
+qu'ils ont connue et avec laquelle
+ils ont grandi durant ces années là.
 
 9
-00:00:38,905 --> 00:00:42,642
-On va rester tel qu'on est, on reste tel
-qu'on est proche
+00:00:32,280 --> 00:00:35,960
+Et aussi, par ailleurs, de séduire
+une jeune génération
 
 10
-00:00:42,642 --> 00:00:48,281
-des auditeurs, sans prétention
-et avec l'esprit feel good j'ai envie de vous dire. 
+00:00:35,960 --> 00:00:39,280
+qui, on le sait, est friande
+de la programmation de ces années là.
 
 11
-00:00:48,281 --> 00:00:52,819
-ce rebranding va donc poursuivre cet esprit feel good
-qui est cher au public.
+00:00:39,600 --> 00:00:42,600
+Les années 80, c'est une décennie
+absolument incroyable.
 
 12
-00:00:52,819 --> 00:00:57,724
-Mais il dotera la station d'une identité
-plus moderne, parfaitement dans l'air du temps.
+00:00:42,840 --> 00:00:47,360
+Si je prends mon histoire personnelle,
+elle est liée aussi à l'ADN de Radio
 
 13
-00:00:57,724 --> 00:01:01,428
-Il s'agit d'un travail très important
-réalisé par nos équipes internes,
+00:00:47,360 --> 00:00:51,600
+Contact puisque j'ai
+commencé à travailler comme animateur
 
 14
-00:01:01,428 --> 00:01:06,699
-que ce soit le marketing,
-la communication, l’IT et l'antenne.
+00:00:51,600 --> 00:00:56,640
+alors que j'avais seize ans en 1986,
+seize en 86, ça remonte.
 
 15
-00:01:06,699 --> 00:01:08,902
-Alors de mon côté, pour le petit clin
-d'œil, j'ai suivi cette mise en place
+00:00:56,880 --> 00:00:58,520
+Et que donc aujourd'hui,
 
 16
-00:01:08,902 --> 00:01:12,305
-et cette nouvelle identité avec beaucoup d'attention et de réflexion, mais aussi de bienveillance.
+00:00:58,520 --> 00:01:02,520
+être entouré par l'équipe
+et dans ce projet Contact
 
 17
-00:01:12,305 --> 00:01:16,276
-Car je n'oublie pas que c'est Radio Contact qui m'a permis d'apprendre ce métier qu'est
+00:01:02,520 --> 00:01:05,240
+Max est pour moi
+quelque chose de magnifique
 
 18
-00:01:16,276 --> 00:01:19,446
-la radio et la base de ce métier,
-alors que je n'avais que seize ans.
+00:01:05,240 --> 00:01:07,560
+et une nouvelle aventure palpitante
+qui s'annonce.
 
 19
-00:01:19,446 --> 00:01:23,083
-Ça remonte évidemment à très loin
-et aux années 80.
+00:01:07,560 --> 00:01:10,600
+Les artistes de référence des années 80,
+il y en a évidemment tout plein.
 
 20
-00:01:23,083 --> 00:01:25,852
-À quelques heures de ce lancement,
-je ressent comme tout le monde
+00:01:11,040 --> 00:01:13,800
+Je dirais d'un point de vue personnel,
 
 21
-00:01:25,852 --> 00:01:28,855
-de l'excitation d'une part,
-et de l'appréhension de l'autre.
+00:01:13,800 --> 00:01:18,080
+George Michael Tears for fears, Madonna,Queen,
 
 22
-00:01:28,855 --> 00:01:32,792
-Car le moment que nous vivons est malgré
-tout historique pour Radio Contact,
+00:01:18,240 --> 00:01:21,520
+même si Queen c'était un peu avant
+et beaucoup d'autres.
 
 23
-00:01:32,792 --> 00:01:36,629
-puisque l'affect entre le public
-et la station est puissant.
+00:01:21,840 --> 00:01:27,000
+En effet,
+on sera diffusé avec Contact Max en DAB+.
 
 24
-00:01:36,629 --> 00:01:40,767
-Je pense aussi ne pas me tromper
-en affirmant que les Belges vont très vite
+00:01:27,120 --> 00:01:32,240
+On a eu la chance de participer
+à un appel d'offres que nous avons obtenu
 
 25
-00:01:40,767 --> 00:01:43,970
-apprivoiser notre nouveau dauphin
-et se sentir bien avec lui.
+00:01:32,240 --> 00:01:36,240
+pour pouvoir avoir une couverture
+nationale au niveau du DAB+
 
 26
-00:01:43,970 --> 00:01:47,507
-Je suis également confiant pour le futur,
-ne serait ce qu'en regardant
+00:01:36,240 --> 00:01:38,160
+qui est cette nouvelle technologie radio
 
 27
-00:01:47,507 --> 00:01:51,511
-les récentes audiences de Radio Contact
-qui restent très positives.
+00:01:38,160 --> 00:01:41,240
+qui prend de plus en plus d'ampleur
+chez nous en Belgique francophone,
 
 28
-00:01:51,511 --> 00:01:54,881
-C'est un succès qui ne va pas
-nous empêcher de toujours innover,
+00:01:41,240 --> 00:01:44,600
+mais pas seulement puisque Contact
+Max sera diffusé
 
 29
-00:01:54,881 --> 00:01:59,819
-de toujours surprendre et surtout
-de toujours faire plaisir aux auditeurs
+00:01:45,040 --> 00:01:48,360
+également via l'application de Radio
+Contact,
 
 30
-00:01:59,819 --> 00:02:04,290
-avec toute la passion
-qui anime chaque membre de notre équipe,
+00:01:48,680 --> 00:01:52,200
+via le site web de Radio Contact
 
 31
-00:02:04,290 --> 00:02:09,195
-Nos ambitions, mais elles sont élevées,
-notre volonté, c'est de conforter Radio Contact
+00:01:52,200 --> 00:01:56,160
+avec une page spéciale
+dédiée à Contact Max.
 
 32
-00:02:09,195 --> 00:02:12,832
-à sa place de Radio
-numéro un en Belgique francophone,
+00:01:56,440 --> 00:02:00,600
+Et puis également en télévision,
+puisque lorsque
 
 33
-00:02:12,832 --> 00:02:19,472
-en lui assurant un leadership sur la cible
-18-54 mais aussi sur celle des 12+.
+00:02:00,600 --> 00:02:04,800
+les programmes de RTL district
+ne sont pas à l'antenne,
 
 34
-00:02:19,472 --> 00:02:24,244
-Et nul doute que notre nouvelle identité
-nous y aidera dans les prochains mois.
+00:02:04,960 --> 00:02:09,600
+et bien le signal de Radio Contact
+Max sera diffusé également en télévision.
+
+35
+00:02:09,920 --> 00:02:14,680
+Ce positionnement, parce qu'il correspond
+à l'ADN et à l'histoire de Radio Contact.
+
+36
+00:02:15,120 --> 00:02:19,160
+En fait, nous voulons faire plaisir
+et offrir une vraie alternative
+
+37
+00:02:19,160 --> 00:02:20,680
+à un public plus adulte
+
+38
+00:02:20,680 --> 00:02:25,520
+et c'est pour ça que Radio Contact Max,
+me semble-t-il, est tout à fait légitime.
+
+39
+00:02:26,200 --> 00:02:29,640
+L’ambition, c’est effectivement, comme je l'ai déjà dit,
+
+40
+00:02:29,640 --> 00:02:32,440
+faire plaisir aux gens, à ceux qui nous écouteront 
+
+41
+00:02:32,440 --> 00:02:35,440
+en leur proposant
+une bonne programmation musicale,
+
+42
+00:02:35,440 --> 00:02:39,480
+de bonnes informations, du contenu aussi,
+avec des surprises. 
+
+43
+00:02:40,600 --> 00:02:42,880
+L'’idée,
+c'est évidemment d'en faire un succès.
+
+44
+00:02:43,080 --> 00:02:47,520
+Un succès d'audience d'abord,
+un succès ensuite, qui pérennise
+
+45
+00:02:47,880 --> 00:02:51,280
+cette belle marque historique
+qu'est la seule marque historique
+
+46
+00:02:51,280 --> 00:02:53,480
+belge de radio
+qu’est Radio Contact. 
+
+47
+00:02:53,480 --> 00:02:56,960
+“Simply the best” c’est la promesse qu'on fait à nos auditeurs, 
+
+48
+00:02:56,960 --> 00:02:59,520
+“Simply the best”, c'est
+la chanson de Tina Turner,
+
+49
+00:02:59,520 --> 00:03:02,520
+ce sera d'ailleurs
+la première chanson qui sera lancée
+
+50
+00:03:02,720 --> 00:03:07,120
+sur l'antenne de Contact
+Max le 13 février, aux alentours de 13 h.
