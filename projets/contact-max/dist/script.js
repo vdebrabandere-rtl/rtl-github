@@ -89,7 +89,7 @@ class LyricsApp extends HTMLElement {
         </button>
         <custom-player src="${this.soundOrigin}${this.id}.mp3""></custom-player>
         <div class="c-app__bg">
-            <img class="c-app__img" src="${this.imageOrigin}${this.id}.jpg" alt="Photo floue de l'animateur en background">
+            <img class="c-app__img" src="${this.imageOrigin}${this.id}.jpeg" alt="Photo floue de l'animateur en background">
         </div>
         <div class="c-app__bar"></div>
         `;
