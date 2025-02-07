@@ -53,7 +53,7 @@ class LyricsApp extends HTMLElement {
         <div class="c-top-bar">
             <div class="c-header sticky">
                 <div class="c-header__icon">
-                    <img class="c-header__img" src="${this.imageOrigin}${this.id}.jpg" alt="">
+                    <img class="c-header__img" src="${this.imageOrigin}${this.id}.jpeg" alt="${this._data.name}">
                 </div>
                 <div class="c-header__text">
                     <h3 class="c-header__title">${this._data.title}</h3>
@@ -71,7 +71,7 @@ class LyricsApp extends HTMLElement {
         <div class="c-content">
             <div class="c-header">
                 <div class="c-header__icon">
-                    <img class="c-header__img" src="${this.imageOrigin}${this.id}.jpg" alt="">
+                    <img class="c-header__img" src="${this.imageOrigin}${this.id}.jpeg" alt="${this._data.name}">
                 </div>
                 <div class="c-header__text">
                     <h3 class="c-header__title">${this._data.title}</h3>
