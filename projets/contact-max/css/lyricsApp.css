@@ -1,6 +1,7 @@
 lyrics-app {
     --header-transition-duration: 0.45s;
     position: relative;
+    isolation: isolate;
     display: block;
     width: 100%;
     height: 100%;
@@ -37,6 +38,7 @@ lyrics-app::before {
 
     pointer-events: none;
 }
+
 lyrics-app.sticky::before {
     opacity: 1;
     transition: opacity 0.25s ease-out;
@@ -92,15 +94,18 @@ lyrics-app.scrolled::before {
 }
 
 .c-app__bg {
-    --blur-size: calc(25px + 1vw);
     position: absolute;
     inset: calc(-1 * var(--blur-size));
 
-    filter: blur(var(--blur-size));
     background-color: #00007C;
-    opacity: 0.5;
 
     z-index: -1;
+}
+
+.c-app__bg img {
+    --blur-size: calc(25px + 1vw);
+    filter: blur(var(--blur-size));
+    opacity: 0.5;
 }
 
 lyrics-app.sticky .c-app__bg {
