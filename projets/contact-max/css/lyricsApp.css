@@ -100,14 +100,14 @@ lyrics-app.scrolled::before {
     position: absolute;
     inset: calc(-1 * var(--blur-size));
 
-    background-color: #00007C;
+    background-color: #00007CEE;
 
     z-index: -1;
 }
 
 .c-app__bg img {
     filter: blur(var(--blur-size));
-    opacity: 0.5;
+    opacity: 0.2;
 }
 
 lyrics-app.sticky .c-app__bg {
