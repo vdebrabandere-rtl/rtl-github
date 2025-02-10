@@ -123,7 +123,7 @@ lyrics-app.sticky .c-app__bg {
 
     width: 100%;
     height: 100%;
-    padding-bottom: 50%;
+    padding-bottom: 20vh;
     box-sizing: border-box;
     overflow-y: scroll;
     scrollbar-width: none;
