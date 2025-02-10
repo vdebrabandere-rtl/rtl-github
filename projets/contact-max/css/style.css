@@ -19,7 +19,7 @@ body {
 
 .c-loading-screen p {
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .c-loading__images {
@@ -58,7 +58,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 30px;
 }
 .c-loading__button {
     z-index: 999999;
