@@ -81,6 +81,8 @@ lyrics-app.scrolled::before {
 }
 
 .c-app__bar {
+    --blur-size: calc(25px + 1vw);
+
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -103,7 +105,6 @@ lyrics-app.scrolled::before {
 }
 
 .c-app__bg img {
-    --blur-size: calc(25px + 1vw);
     filter: blur(var(--blur-size));
     opacity: 0.5;
 }
