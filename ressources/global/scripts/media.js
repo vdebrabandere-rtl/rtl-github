@@ -10,9 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: [0, 0.5, 1]
     };
 
+    // Handle user-initiated pause/play to toggle scroll autoplay behavior
+    const handleUserPauseState = (videoElement, evt) => {
+        const lastUserInteraction = videoElement.dataset.lastUserInteraction === 'true';
+        const userInitiated = (evt && evt.isTrusted) || lastUserInteraction;
+
+        if (videoElement.paused) {
+            // Mark as user-paused only for user-initiated pauses
+            if (userInitiated) {
+                videoElement.dataset.userPaused = 'true';
+                videoElement.classList.remove('js-scroll-sound');
+                videoElement.classList.add('js-scroll-paused');
+            }
+        } else {
+            // Playing clears the userPaused flag
+            videoElement.dataset.userPaused = 'false';
+            videoElement.classList.add('js-scroll-sound');
+            videoElement.classList.remove('js-scroll-paused');
+        }
+
+        // Reset the hint flag after handling
+        videoElement.dataset.lastUserInteraction = 'false';
+    };
+
     const videoVisibilityChanged = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.target.classList.contains('js-autoplay')) {
+                const userPaused = entry.target.dataset && entry.target.dataset.userPaused === 'true';
+                if (userPaused) return; // respect manual pause
+
                 if (entry.isIntersecting) {
                     entry.target.play();
                 } else {
@@ -23,7 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const observer = new IntersectionObserver(videoVisibilityChanged, observerOptions);
-    videos.forEach(video => observer.observe(video));
+    videos.forEach(video => {
+
+        // Initialize user pause flag
+        if (!video.dataset.userPaused) video.dataset.userPaused = 'false';
+        if (!video.dataset.lastUserInteraction) video.dataset.lastUserInteraction = 'false';
+
+        // Wire user interaction listeners
+        video.addEventListener('click', () => {
+            // Mark that the next media state change is from a user action
+            video.dataset.lastUserInteraction = 'true';
+            setTimeout(() => handleUserPauseState(video), 50);
+        });
+        video.addEventListener('pause', (evt) => handleUserPauseState(video, evt));
+        video.addEventListener('play', (evt) => handleUserPauseState(video, evt));
+        video.addEventListener('seeked', (evt) => {
+            // Seeking is user interaction; don't force userPaused true, but clear flag
+            video.dataset.lastUserInteraction = evt && evt.isTrusted ? 'true' : 'false';
+            video.dataset.userPaused = 'false';
+            handleUserPauseState(video, evt);
+        });
+
+        // Initialize state once
+        handleUserPauseState(video);
+
+        observer.observe(video);
+    });
 
     const adjustVideoVolumeOnScroll = () => {
         let maxVisibleVolume = 0;
